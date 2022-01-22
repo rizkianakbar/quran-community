@@ -9,7 +9,7 @@ class MyDocument extends Document {
           <link rel="apple-touch-icon" href="/icon.png" />
           <meta charSet="UTF-8" />
           <meta content="ie=edge" httpEquiv="X-UA-Compatible" />
-          <meta content="#6BC4BA" name="theme-color" />
+          <meta content="#5EEAD3" name="theme-color" />
         </Head>
         <body>
           <Main />
