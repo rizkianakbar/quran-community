@@ -9,9 +9,17 @@ export function HomepageHeader() {
       <Container>
         <div className="relative">
           <div aria-hidden className="select-none">
-            <Image src={banner} placeholder="blur" alt="banner" />
+            <Image
+              src={banner}
+              placeholder="blur"
+              alt="banner"
+              layout="responsive"
+              height={288}
+              quality={90}
+              width={640}
+            />
           </div>
-          <div className="flex flex-col absolute top-0 left-0 w-full h-full p-4">
+          <div className="flex flex-col absolute top-0 mb-5 left-0 w-full h-full p-4">
             <div className="flex flex-col flex-1 items-start justify-between">
               {/* TODO: add logo */}
               <h2 className="h-8 md:h-10 font-bold">QuranMemo</h2>
