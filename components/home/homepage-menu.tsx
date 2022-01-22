@@ -5,7 +5,7 @@ import { homepageMenus } from '@/lib/home/homepage-menus';
 
 export function HomePageMenu() {
   return (
-    <ul className="grid grid-cols-4 gap-3 sm:gap-6 sm:grid-cols-4">
+    <ul className="grid grid-cols-3 gap-3 sm:gap-6 sm:grid-cols-3">
       {homepageMenus.map((item) => (
         <li
           key={item.name}
