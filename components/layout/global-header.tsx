@@ -8,7 +8,7 @@ export const GlobalHeader = () => {
   const popoverButtonRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <div className="flex items-center justify-center fixed w-full h-16 z-40 bg-teal-400 shadow-md">
+    <header className="flex items-center justify-center fixed w-full h-16 z-40 bg-teal-300 shadow-md">
       <Container className="flex items-center justify-between h-full px-4">
         <Link href="/">
           <a className="align-middle">
@@ -36,6 +36,6 @@ export const GlobalHeader = () => {
           )}
         </Popover>
       </Container>
-    </div>
+    </header>
   );
 };
