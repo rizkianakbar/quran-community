@@ -14,9 +14,9 @@ export function HomepageHeader() {
               placeholder="blur"
               alt="banner"
               layout="responsive"
-              height={288}
-              quality={90}
-              width={640}
+              // height={288}
+              // quality={90}
+              // width={640}
             />
           </div>
           <div className="flex flex-col absolute top-0 mb-5 left-0 w-full h-full p-4">

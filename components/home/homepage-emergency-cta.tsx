@@ -21,8 +21,8 @@ export function HomePageEmergencyContactCTA() {
               </Link>
             </h3>
             <p className="text-sm leading-4 text-gray-500">
-              Download app fiqh muamalah sehari-hari dikelola oleh Ustadz DR.
-              Oni Sahroni, MA.
+              Download app fiqh muamalah yg dikelola oleh Ustadz DR. Oni
+              Sahroni, MA.
             </p>
           </div>
         </div>
