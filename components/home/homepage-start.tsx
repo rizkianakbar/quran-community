@@ -6,7 +6,7 @@ import { HomePageMenu } from './homepage-menu';
 export function HomePageStart() {
   return (
     <HomePageSection>
-      <div className="px-4 py-6">
+      <div className="px-4 py-4">
         <HomePageEmergencyContactCTA />
       </div>
       <div className="px-4">

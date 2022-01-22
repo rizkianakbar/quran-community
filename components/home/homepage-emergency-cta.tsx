@@ -6,7 +6,7 @@ import playstore from '../../public/playstore-logo.svg';
 export function HomePageEmergencyContactCTA() {
   return (
     <div className="rounded-sm">
-      <div className="flex flex-row relative py-5 px-4 border-gray-100 border-2 rounded-lg justify-between">
+      <div className="flex flex-row relative py-2 px-2 border-gray-100 border-2 rounded-lg justify-between">
         <div className="flex flex-row items-center">
           <div
             aria-hidden
@@ -20,7 +20,7 @@ export function HomePageEmergencyContactCTA() {
                 <a className="helper-link-cover">Muamalah Daily</a>
               </Link>
             </h3>
-            <p className="text-sm leading-4 text-gray-500">
+            <p className="text-xs leading-4 text-gray-500">
               Download app fiqh muamalah yg dikelola oleh Ustadz DR. Oni
               Sahroni, MA.
             </p>
