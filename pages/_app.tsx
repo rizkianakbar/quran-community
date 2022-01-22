@@ -10,6 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>QuranMemo</title>
         <meta name="description" content="Menghafal Al-Quran di era digital" />
         <link rel="icon" href="/favicon.ico" />
+        <meta content="#6BC4BA" name="theme-color" />
       </Head>
       <Component {...pageProps} />
     </LayoutRoot>
