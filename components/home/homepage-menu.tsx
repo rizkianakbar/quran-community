@@ -13,7 +13,7 @@ export function HomePageMenu() {
         >
           <div
             aria-hidden
-            className="flex items-center justify-center h-10 w-10 bg-blue-100 rounded-full"
+            className="flex items-center justify-center h-10 w-10 bg-[#5EEAD3] rounded-full"
           >
             {React.createElement(item.icon, {
               className: 'h-6 w-6 text-brand-500',
