@@ -67,11 +67,11 @@ export default function Example() {
               key={category}
               className={({ selected }) =>
                 classNames(
-                  'w-full py-2.5 text-sm text-black leading-5 font-medium text-blue-700 rounded-lg',
+                  'w-full py-2.5 text-sm text-black leading-5 font-medium rounded-lg',
                   'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60',
                   selected
-                    ? 'bg-white shadow'
-                    : 'text-blue-100 hover:bg-white/[0.12] hover:text-white'
+                    ? 'bg-white shadow text-[#5EEAD3]'
+                    : 'text-black hover:bg-white/[0.12] hover:text-[#5EEAD3]'
                 )
               }
             >
