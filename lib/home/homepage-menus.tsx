@@ -40,7 +40,7 @@ export const homepageMenus: HomepageMenuItem[] = [
   },
   {
     name: 'Al-Quran',
-    href: '/',
+    href: '/quran',
     icon: EducationIcon,
   },
   {
@@ -64,9 +64,9 @@ export const homepageMenus: HomepageMenuItem[] = [
     href: '/',
     icon: DonationIcon,
   },
-  {
-    name: 'Quran Mapping',
-    href: '/',
-    icon: DonationIcon,
-  },
+  // {
+  //   name: 'Quran Mapping',
+  //   href: '/',
+  //   icon: DonationIcon,
+  // },
 ];
