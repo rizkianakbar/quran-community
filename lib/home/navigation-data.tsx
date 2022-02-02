@@ -27,7 +27,7 @@ export const bottomNavigation: NavigationItem[] = [
   {
     name: 'Search',
     icon: SearchIcon,
-    href: '/provinces',
+    href: '/quran',
   },
   {
     name: 'Notifications',

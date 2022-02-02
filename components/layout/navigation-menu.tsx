@@ -4,7 +4,7 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { navMenu } from './navigation-data';
+import { navMenu } from '../../lib/home/navigation-data';
 
 const navMenuClasses = (isActive?: boolean) => {
   return [
