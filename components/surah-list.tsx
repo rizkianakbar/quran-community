@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { surahList } from '../lib/surah/surah-list';
 
 export function SurahList() {
@@ -8,17 +9,26 @@ export function SurahList() {
           <div className="bg-teal-300 flex-shrink-0 flex items-center justify-center w-16 text-white text-sm font-medium rounded-l-md">
             {surah.arabicName}
           </div>
-          <a
-            className="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate"
-            title={surah.name}
+          <Link
+            href={{
+              pathname: `/quran/${surah.id}`,
+              query: {
+                id: surah.id,
+              },
+            }}
           >
-            <div className="flex-1 px-4 py-2 text-sm truncate">
-              <span className="text-gray-900 font-semibold hover:text-gray-600">
-                {surah.name}
-              </span>
-              <p className="text-gray-500">{surah.ayat} ayat</p>
-            </div>
-          </a>
+            <a
+              className="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate"
+              title={surah.name}
+            >
+              <div className="flex-1 px-4 py-2 text-sm truncate">
+                <span className="text-gray-900 font-semibold hover:text-gray-600">
+                  {surah.name}
+                </span>
+                <p className="text-gray-500">{surah.ayat} ayat</p>
+              </div>
+            </a>
+          </Link>
         </li>
       ))}
     </ul>
