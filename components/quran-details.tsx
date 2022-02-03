@@ -6,7 +6,7 @@ export function QuranDetails({ data }: any) {
     return (
       <div className="p-5" key={i}>
         {/* make the span in right */}
-        <p className="text-3xl font-sans text-[#0d4643] text-right mb-4">
+        <p className="quran text-3xl text-[#0d4643] text-right mb-4">
           {text[ayat]}
         </p>
         <p className="text-gray-500 text-sm">

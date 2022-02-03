@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'me-quran';
+  src: url('../lib/font/me_quran.ttf') format('truetype');
+  font-weight: 400;
+  font-weight: normal;
+  font-display: swap;
+}
+
 html,
 body {
   padding: 0;
@@ -40,4 +48,9 @@ a {
 #nprogress .spinner-icon {
   border-top-color: #f3f4f6 !important;
   border-left-color: #f3f4f6 !important;
+}
+
+.quran {
+  font-family: 'me-quran';
+  line-height: 1.6;
 }
