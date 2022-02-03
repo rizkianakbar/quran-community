@@ -7,7 +7,7 @@ import {
 import React from 'react';
 
 export function QuranDetails({ data }: any) {
-  const { text, translations, number } = data;
+  const { text, translations } = data;
 
   const buttonData = [
     {
@@ -45,7 +45,7 @@ export function QuranDetails({ data }: any) {
     return (
       <>
         <div className="p-5" key={ayat}>
-          <p className="quran text-3xl text-[#0d4643] text-right mb-4">
+          <p className="quran text-2xl text-[#0d4643] text-right mb-4">
             {text[ayat]}
           </p>
           <p className="text-gray-500 text-sm">
