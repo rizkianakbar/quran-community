@@ -5,13 +5,14 @@ import { paths } from '@/lib/surah/surah-list';
 import { PageHeader } from '@/components/layout/pages/page-header';
 import { BackButton } from '@/components/layout/back-button';
 import { QuranDetails } from '@/components/quran-details';
+import { HeaderQuran } from '@/components/ui/header-quran';
 
 export default function QuranDetail({ surah }: any) {
   const router = useRouter();
   const { id } = router.query;
   const data = JSON.parse(surah)[`${id}`];
   console.log(data);
-  const title = `Surah ${data.name_latin}`;
+  const title = `${id}. Surah ${data.name_latin}`;
   return (
     <Page>
       <PageHeader
@@ -28,9 +29,10 @@ export default function QuranDetail({ surah }: any) {
           },
         ]}
         description=""
-        title={title}
+        title=""
       />
       <PageContent>
+        <HeaderQuran title={title} />
         <QuranDetails data={data} />
       </PageContent>
     </Page>
