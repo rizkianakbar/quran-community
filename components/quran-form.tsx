@@ -1,5 +1,4 @@
-import { ArrowRightIcon } from '@heroicons/react/outline';
-import { ArrowLeftIcon } from '@heroicons/react/solid';
+import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -29,15 +28,22 @@ export function QuranForm({ data }: any) {
   ];
   const dataRendered = btnData.map((item) => {
     return (
-      <Link key={item.id} href={item.name === 'next' ? next : prev}>
+      <Link
+        key={item.id}
+        href={
+          item.name !== 'next' && item.name !== 'prev'
+            ? `/quran/${id}?id=${id}`
+            : (item.name = 'next' ? next : prev)
+        }
+      >
         <a
           key={item.id}
-          className="border-2 py-1 px-5 border-gray-200 hover:bg-[#5EEAD3] hover:text-white hover:border-[#5EEAD3]"
+          className="border py-1 px-2 border-gray-200 hover:bg-[#5EEAD3] hover:text-white hover:border-[#5EEAD3]"
         >
           {/* if icon exist then render icon else render text */}
           {item.icon
             ? React.createElement(item.icon, {
-                className: 'h-4 inline-block mr-1',
+                className: 'h-4 inline-block',
               })
             : item.name}
         </a>
