@@ -4,15 +4,35 @@ import {
   PlusIcon,
   ShareIcon,
 } from '@heroicons/react/solid';
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
 
 export function QuranDetails({ data }: any) {
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const { text, translations } = data;
+  const router = useRouter();
+  const { id } = router.query;
+
+  const onClickPlay = (index: any) => {
+    console.log(isAudioPlaying);
+    if (isAudioPlaying) {
+      return;
+    } else {
+      setIsAudioPlaying(true);
+      const audioPath = `https://quranmemo.com/public/sound/Al_Afasy/00${id}00${index}.mp3`;
+      const audio = new Audio(audioPath);
+      audio.play();
+      audio.onended = () => {
+        setIsAudioPlaying(false);
+      };
+    }
+  };
 
   const buttonData = [
     {
       text: 'Play',
       icon: PlayIcon,
+      onclick: true,
     },
     {
       text: 'Share',
@@ -28,18 +48,11 @@ export function QuranDetails({ data }: any) {
     },
   ];
 
-  const buttonAyat = buttonData.map((item) => {
-    return (
-      <span key={item.text}>
-        <button className="px-2 hover:bg-[#5EEAD3] hover:text-white">
-          {React.createElement(item.icon, {
-            className: 'h-5 inline-block mr-1',
-          })}
-          {item.text}
-        </button>
-      </span>
-    );
-  });
+  // const buttonAyat = buttonData.map((item, index) => {
+  //   return (
+
+  //   );
+  // });
 
   const surahList = Object.keys(text).map((ayat: string, i: number) => {
     return (
@@ -54,7 +67,31 @@ export function QuranDetails({ data }: any) {
           </p>
         </div>
         <div className="bg-gray-100 text-center text-gray-400 text-sm divide-x divide-dashed divide-gray-300">
-          {buttonAyat}
+          {buttonData.map((item, index) => {
+            return (
+              <span key={item.text}>
+                <button
+                  className="px-2 hover:bg-[#5EEAD3] hover:text-white"
+                  // check if onclick is true and then add onclick event
+                  // and give parameter onclickplay
+
+                  {...(item.onclick
+                    ? {
+                        onClick: () => {
+                          onClickPlay(i + 1);
+                        },
+                      }
+                    : {})}
+                  // onClick={item.onclick ? onClickPlay : }
+                >
+                  {React.createElement(item.icon, {
+                    className: 'h-5 inline-block mr-1',
+                  })}
+                  {item.text}
+                </button>
+              </span>
+            );
+          })}
         </div>
       </>
     );
