@@ -8,14 +8,14 @@ import nProgress from 'nprogress';
 import { useEffect } from 'react';
 
 export const progress = nProgress.configure({
-  showSpinner: false,
+  showSpinner: true,
 });
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   useEffect(() => {
     const handleStart = (_: string, { shallow }: { shallow: boolean }) => {
       if (!shallow) {
-        progress.start();
+        progress.set(0.4);
       }
     };
     const handleStop = () => {
