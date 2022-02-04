@@ -14,12 +14,33 @@ export function QuranDetails({ data }: any) {
   const { id } = router.query;
 
   const onClickPlay = (index: any) => {
+    let pathSpecificAyat;
     console.log(isAudioPlaying);
     if (isAudioPlaying) {
       return;
     } else {
       setIsAudioPlaying(true);
-      const audioPath = `https://quranmemo.com/public/sound/Al_Afasy/00${id}00${index}.mp3`;
+      // TODO: need to improve the logic here
+      if (index.toString().length === 1 && id?.toString().length === 1) {
+        pathSpecificAyat = `00${id}00${index}`;
+      } else if (index.toString().length === 1 && id?.toString().length === 2) {
+        pathSpecificAyat = `0${id}00${index}`;
+      } else if (index.toString().length === 1 && id?.toString().length === 3) {
+        pathSpecificAyat = `${id}00${index}`;
+      } else if (index.toString().length === 2 && id?.toString().length === 1) {
+        pathSpecificAyat = `00${id}0${index}`;
+      } else if (index.toString().length === 2 && id?.toString().length === 2) {
+        pathSpecificAyat = `0${id}0${index}`;
+      } else if (index.toString().length === 2 && id?.toString().length === 3) {
+        pathSpecificAyat = `${id}0${index}`;
+      } else if (index.toString().length === 3 && id?.toString().length === 1) {
+        pathSpecificAyat = `00${id}${index}`;
+      } else if (index.toString().length === 3 && id?.toString().length === 2) {
+        pathSpecificAyat = `0${id}${index}`;
+      } else if (index.toString().length === 3 && id?.toString().length === 3) {
+        pathSpecificAyat = `${id}${index}`;
+      }
+      const audioPath = `https://quranmemo.com/public/sound/Al_Afasy/${pathSpecificAyat}.mp3`;
       const audio = new Audio(audioPath);
       audio.play();
       audio.onended = () => {
