@@ -6,6 +6,7 @@ import { PageHeader } from '@/components/layout/pages/page-header';
 import { BackButton } from '@/components/layout/back-button';
 import { QuranDetails } from '@/components/quran-details';
 import { HeaderQuran } from '@/components/ui/header-quran';
+import { QuranForm } from '@/components/quran-form';
 
 export default function QuranDetail({ surah }: any) {
   const router = useRouter();
@@ -33,6 +34,7 @@ export default function QuranDetail({ surah }: any) {
       />
       <PageContent>
         <HeaderQuran title={title} />
+        <QuranForm data={data} />
         <QuranDetails data={data} />
       </PageContent>
     </Page>
