@@ -15,7 +15,7 @@ export const GlobalHeader = () => {
             <h1 className="font-bold text-xl text-white">QuranMemo</h1>
           </a>
         </Link>
-        <Popover className="relative">
+        {/* <Popover className="relative">
           {({ open }) => (
             <>
               <Popover.Button
@@ -34,7 +34,7 @@ export const GlobalHeader = () => {
               />
             </>
           )}
-        </Popover>
+        </Popover> */}
       </Container>
     </header>
   );
