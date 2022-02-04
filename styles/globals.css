@@ -48,6 +48,8 @@ a {
 #nprogress .spinner-icon {
   border-top-color: #f3f4f6 !important;
   border-left-color: #f3f4f6 !important;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
 }
 
 .quran {
