@@ -14,31 +14,37 @@ const calc = (input: any) => {
     result = result + (num % 10);
     num = Math.floor(num / 10);
   }
-  // reverse
   return result.split('').reverse().join('');
 };
 
 export function QuranDetails({ data }: any) {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
-  const { text, translations } = data;
   const router = useRouter();
+  const { text, translations } = data;
   const { id } = router.query;
 
   const onClickPlay = (index: any) => {
-    console.log(isAudioPlaying);
     if (isAudioPlaying) {
       return;
     } else {
       setIsAudioPlaying(true);
+      const verse = document.getElementsByClassName('p-5')[index];
+      if (verse) {
+        verse.classList.add('border-4');
+        verse.classList.add('bg-[#E0EFEE]');
+      }
       const surah = calc(id);
       const ayat = calc(index);
       const audioPath = `https://quranmemo.com/public/sound/Al_Afasy/${surah}${ayat}.mp3`;
-      console.log(audioPath);
 
       const audio = new Audio(audioPath);
       audio.play();
       audio.onended = () => {
         setIsAudioPlaying(false);
+        if (verse) {
+          verse.classList.remove('border-4');
+          verse.classList.remove('bg-[#E0EFEE]');
+        }
       };
     }
   };
@@ -66,7 +72,7 @@ export function QuranDetails({ data }: any) {
   const surahList = Object.keys(text).map((ayat: string, i: number) => {
     return (
       <>
-        <div className="p-5" key={ayat}>
+        <div className="p-5" id={`verse-${id}`} key={ayat}>
           <p className="quran text-2xl text-[#0d4643] text-right mb-4">
             {text[ayat]}
           </p>
