@@ -5,7 +5,7 @@ import { paths } from '@/lib/surah/surah-list';
 import { PageHeader } from '@/components/layout/pages/page-header';
 import { BackButton } from '@/components/layout/back-button';
 import { QuranDetails } from '@/components/quran-details';
-import { HeaderQuran } from '@/components/ui/header-quran';
+import { HeaderQuran } from '@/components/header-quran';
 import { QuranForm } from '@/components/quran-form';
 
 export default function QuranDetail({ surah }: any) {

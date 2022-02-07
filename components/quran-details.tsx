@@ -6,6 +6,7 @@ import {
 } from '@heroicons/react/solid';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import Modal from './modal';
 
 const calc = (input: any) => {
   let result = '';
@@ -19,9 +20,14 @@ const calc = (input: any) => {
 
 export function QuranDetails({ data }: any) {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const { text, translations } = data;
   const { id } = router.query;
+
+  const handleToogle = () => {
+    setIsOpen(!isOpen);
+  };
 
   const onClickPlay = (index: any) => {
     if (isAudioPlaying) {
@@ -49,11 +55,15 @@ export function QuranDetails({ data }: any) {
     }
   };
 
+  const onClickTafsir = (index: any) => {
+    setIsOpen(true);
+  };
+
   const buttonData = [
     {
       text: 'Play',
       icon: PlayIcon,
-      onclick: true,
+      onclick: 'play',
     },
     {
       text: 'Share',
@@ -66,6 +76,7 @@ export function QuranDetails({ data }: any) {
     {
       text: 'Tafsir',
       icon: BookmarkIcon,
+      onclick: 'tafsir',
     },
   ];
 
@@ -90,10 +101,16 @@ export function QuranDetails({ data }: any) {
                   // check if onclick is true and then add onclick event
                   // and give parameter onclickplay
 
-                  {...(item.onclick
+                  {...(item.onclick === 'play'
                     ? {
                         onClick: () => {
                           onClickPlay(i + 1);
+                        },
+                      }
+                    : item.onclick === 'tafsir'
+                    ? {
+                        onClick: () => {
+                          onClickTafsir(i + 1);
                         },
                       }
                     : {})}
@@ -114,6 +131,7 @@ export function QuranDetails({ data }: any) {
   return (
     <div className="bg-white shadow overflow-hidden rounded-md">
       <div className="divide-y divide-dashed divide-gray-300">{surahList}</div>
+      <Modal isOpen={isOpen} onToggle={handleToogle} />
     </div>
   );
 }
