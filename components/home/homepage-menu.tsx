@@ -16,6 +16,12 @@ export function HomePageMenu() {
     setIsOpen(!isOpen);
   };
 
+  const dataModal = {
+    title: 'Access to this page is restricted',
+    description: 'You need to login to access this page.',
+    button: 'Got it, thanks!',
+  };
+
   return (
     <>
       <ul className="grid grid-cols-3 gap-3 sm:gap-6 sm:grid-cols-3">
@@ -51,7 +57,13 @@ export function HomePageMenu() {
           </li>
         ))}
       </ul>
-      <Modal isOpen={isOpen} onToggle={handleToogle} notLogin />
+      <Modal
+        isOpen={isOpen}
+        onToggle={handleToogle}
+        title={dataModal.title}
+        description={dataModal.description}
+        button={dataModal.button}
+      />
     </>
   );
 }

@@ -21,9 +21,12 @@ const calc = (input: any) => {
 export function QuranDetails({ data }: any) {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [indexAyah, setIndexAyah] = useState(0);
   const router = useRouter();
   const { text, translations } = data;
   const { id } = router.query;
+
+  console.log('data', data.tafsir.id.kemenag.text[1]);
 
   const handleToogle = () => {
     setIsOpen(!isOpen);
@@ -57,6 +60,7 @@ export function QuranDetails({ data }: any) {
 
   const onClickTafsir = (index: any) => {
     setIsOpen(true);
+    setIndexAyah(index);
   };
 
   const buttonData = [
@@ -131,7 +135,13 @@ export function QuranDetails({ data }: any) {
   return (
     <div className="bg-white shadow overflow-hidden rounded-md">
       <div className="divide-y divide-dashed divide-gray-300">{surahList}</div>
-      <Modal isOpen={isOpen} onToggle={handleToogle} />
+      <Modal
+        isOpen={isOpen}
+        onToggle={handleToogle}
+        title={`Tafsir ${data.name_latin} : ${indexAyah}`}
+        description={data.tafsir.id.kemenag.text[indexAyah]}
+        button="Close"
+      />
     </div>
   );
 }

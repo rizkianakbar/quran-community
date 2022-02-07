@@ -1,15 +1,17 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 
-export default function Modal({ isOpen, onToggle }: any) {
+export default function Modal({
+  isOpen,
+  onToggle,
+  title,
+  description,
+  button,
+}: any) {
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog
-          as="div"
-          className="fixed inset-0 z-10 overflow-y-auto"
-          onClose={onToggle}
-        >
+        <Dialog as="div" className="fixed inset-0 z-10" onClose={onToggle}>
           <div className="min-h-screen px-4 text-center">
             <Transition.Child
               as={Fragment}
@@ -39,26 +41,24 @@ export default function Modal({ isOpen, onToggle }: any) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+              <div className="overflow-auto inline-block w-full h-full max-h-[30rem] max-w-md p-6 my-8 text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
                 >
-                  Access to this page is restricted
+                  {title}
                 </Dialog.Title>
                 <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    You need to login to access this page.
-                  </p>
+                  <p className="text-sm text-gray-500">{description}</p>
                 </div>
 
                 <div className="mt-4">
                   <button
                     type="button"
-                    className="inline-flex justify-center px-4 py-2 text-sm font-medium bg-[#E0EFEE] text-[#20b2aa] border border-transparent rounded-md hover:bg-[#5EEAD3] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                    className="inline-flex justify-center px-4 py-2 text-sm font-medium bg-[#E0EFEE] text-[#20b2aa] border border-transparent rounded-md hover:bg-[#5EEAD3] hover:text-whites"
                     onClick={onToggle}
                   >
-                    Got it, thanks!
+                    {button}
                   </button>
                 </div>
               </div>
