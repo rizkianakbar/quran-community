@@ -21,9 +21,9 @@ export interface HomepageMenuItem {
 export const homepageMenus: HomepageMenuItem[] = [
   {
     name: 'Ziyadah',
-    href: '/',
+    href: '/ziyadah',
     icon: HospitalIcon,
-    needLogin: true,
+    needLogin: false,
   },
   {
     name: 'Hafalan',
