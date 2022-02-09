@@ -1,10 +1,12 @@
 import { ChangeEvent, useState } from 'react';
 
-export function Search({ autoSearch }: any) {
+export function Search({ autoSearch, fnCallback }: any) {
   const [keywords, setKeywords] = useState<string>('Al-Fatihah');
   const handleKeywordsChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newKeywords = event.target.value;
     setKeywords(newKeywords);
+    // console.log('newKeywords', newKeywords);
+    fnCallback(newKeywords);
   };
 
   return (
@@ -22,7 +24,7 @@ export function Search({ autoSearch }: any) {
           id="search"
           onChange={handleKeywordsChange}
           placeholder="Cari surah"
-          value={keywords}
+          // value={keywords}
         />
       </div>
     </div>

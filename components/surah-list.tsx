@@ -1,10 +1,24 @@
 import Link from 'next/link';
 import { surahList } from '../lib/surah/surah-list';
 
-export function SurahList() {
+export function SurahList({ dataFiltered }: any) {
+  // console.log('ini di surah list', dataFiltered);
+
+  const data = () => {
+    if (dataFiltered) {
+      return surahList.filter((item: any) => {
+        return Object.values(item)
+          .join('')
+          .toLowerCase()
+          .includes(dataFiltered.toLowerCase());
+      });
+    } else {
+      return surahList;
+    }
+  };
   return (
     <ul className="mt-3 grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-2 mt-10">
-      {surahList.map((surah) => (
+      {data().map((surah) => (
         <li className="col-span-1 flex shadow-sm rounded-md" key={surah.id}>
           <div className="bg-teal-300 flex-shrink-0 flex items-center justify-center w-16 text-white text-sm font-medium rounded-l-md">
             {surah.arabicName}

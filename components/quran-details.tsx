@@ -26,7 +26,7 @@ export function QuranDetails({ data }: any) {
   const { text, translations } = data;
   const { id } = router.query;
 
-  console.log('data', data.tafsir.id.kemenag.text[1]);
+  // console.log('data', data.tafsir.id.kemenag.text[1]);
 
   const handleToogle = () => {
     setIsOpen(!isOpen);

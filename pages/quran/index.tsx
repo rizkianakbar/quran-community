@@ -4,8 +4,10 @@ import { Page } from '@/components/layout/pages/page';
 import { PageHeader } from '@/components/layout/pages/page-header';
 import { Search } from '@/components/search';
 import { SurahList } from '@/components/surah-list';
+import { useState } from 'react';
 
-export default function quran() {
+export default function Quran() {
+  const [callback, setCallback] = useState<string>('');
   const breadcrumbs = [
     {
       name: 'Al-Quran',
@@ -13,6 +15,11 @@ export default function quran() {
       current: true,
     },
   ];
+
+  const fnCallback = (data: any) => {
+    // console.log('data', data);
+    setCallback(data);
+  };
 
   const description =
     'Rasulullah shallallahu ‘alaihi wasallam pernah bersabda, ‘Bacalah Al-Qur’an. Sebab, ia akan datang memberikan syafaat pada hari Kiamat kepada pemilik (pembaca, pengamal)-nya,” (HR. Ahmad).';
@@ -25,8 +32,8 @@ export default function quran() {
         title="Al-Quran"
       />
       <PageContent>
-        <Search autoSearch />
-        <SurahList />
+        <Search autoSearch fnCallback={fnCallback} />
+        <SurahList dataFiltered={callback} />
       </PageContent>
     </Page>
   );
