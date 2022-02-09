@@ -1,13 +1,20 @@
-export function QuranSelect() {
+export function QuranSelect({ surahList }: any) {
+  const option = surahList.map((item: any) => {
+    return (
+      <option key={item.id} value={item.name}>
+        {item.name}
+      </option>
+    );
+  });
+
   return (
-    <div>
+    <>
       <select
         name="id"
         id="id"
-        className="w-full h-10 px-4 py-2 bg-white border border-gray-300 rounded-lg border-teal-300"
+        className="w-full h-10 px-4 py-2 bg-white border border-gray-300 rounded-lg border-teal-300 text-gray-400"
       >
-        <option value="1">1</option>
-        <option value="2">2</option>
+        {option}
       </select>
       <div className="flex justify-between md:justify-center xs:justify-start text-center mt-2 border rounded-lg border-teal-300">
         <input
@@ -24,6 +31,9 @@ export function QuranSelect() {
           placeholder="Ayat"
         />
       </div>
-    </div>
+      <button className="w-full mt-2 h-10 px-4 py-2 bg-teal-400 text-white rounded-lg border-teal-400 text-sm">
+        Hafalkan
+      </button>
+    </>
   );
 }

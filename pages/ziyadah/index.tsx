@@ -2,7 +2,7 @@ import { BackButton } from '@/components/layout/back-button';
 import { Page, PageContent } from '@/components/layout/pages';
 import { PageHeader } from '@/components/layout/pages/page-header';
 import { QuranSelect } from '@/components/quran-select';
-import { Search } from '@/components/search';
+import { surahList } from '../../lib/surah/surah-list';
 
 export default function Ziyadah() {
   const breadcrumbs = [
@@ -24,7 +24,7 @@ export default function Ziyadah() {
         title="Ziyadah"
       />
       <PageContent>
-        <QuranSelect />
+        <QuranSelect surahList={surahList} />
       </PageContent>
     </Page>
   );
