@@ -1,10 +1,8 @@
 import { useRouter } from 'next/router';
 import { paths } from '@/lib/surah/surah-list';
 import { GetStaticProps } from 'next';
-import { useState } from 'react';
-import { Page, PageContent } from '@/components/layout/pages';
-import { PageHeader } from '@/components/layout/pages/page-header';
-import { BackButton } from '@/components/layout/back-button';
+import { Page } from '@/components/layout/pages';
+import Tabs from '@/components/tabs';
 
 export default function ZiyadahDetail({ surah }: any) {
   const router = useRouter();
@@ -23,43 +21,14 @@ export default function ZiyadahDetail({ surah }: any) {
 
     ayat = ayatt;
   }
-  console.log(ayat);
-
-  const renderAyat = ayat?.map((ayat: any, index) => {
-    return (
-      <div key={index}>
-        <p>{ayat}</p>
-      </div>
-    );
-  });
 
   return (
     <Page>
-      <PageHeader
-        backButton={<BackButton href="/quran" />}
-        breadcrumbs={[
-          {
-            name: 'Ziyadah',
-            href: '/ziyadah',
-          },
-          {
-            name: `${data.name_latin}`,
-            href: `/ziyadah/${id}`,
-            current: true,
-          },
-        ]}
-        description=""
-        title=""
-      />
-      <PageContent>
-        {/* <div className="bg-white rounded shadow-md">{renderAyat}</div> */}
-
-        <div className="bg-white shadow overflow-hidden rounded-md">
-          <div className="divide-y divide-dashed divide-gray-300">
-            {renderAyat}
-          </div>
+      <div className="flex flex-col flex-1 pb-12">
+        <div className="w-full sm:max-w-xl mx-auto">
+          <Tabs ayat={ayat} data={data} />
         </div>
-      </PageContent>
+      </div>
     </Page>
   );
 }
