@@ -56,3 +56,8 @@ a {
   font-family: 'me-quran';
   line-height: 1.6;
 }
+
+.blur {
+  color: transparent;
+  text-shadow: 0 0 8px #000;
+}
