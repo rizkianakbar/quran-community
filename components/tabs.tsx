@@ -51,6 +51,8 @@ export default function Tabs({ ayat, data }: any) {
   const [bluredAwalAkhir, setBluredAwalAkhir] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [bluredAcak, setBluredAcak] = useState(false);
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalDesc, setModalDesc] = useState('');
 
   // console.log(ayat);
   // console.log(data);
@@ -70,6 +72,8 @@ export default function Tabs({ ayat, data }: any) {
       title: 'Rekam',
       onclick: () => {
         setIsOpen(true);
+        setModalTitle('Rekam');
+        setModalDesc('TODO: make this function work');
       },
     },
     {
@@ -328,17 +332,23 @@ export default function Tabs({ ayat, data }: any) {
     );
   });
 
-  const renderPuzzle = ayat?.map((ayat: any, index: number) => {
+  const renderPuzzle = ayat?.map((ayat: any, indexParent: number) => {
+    let idx = 0;
+    const lengthAyat = ayat.split(' ').length;
     return (
       <>
-        <div className="p-1" key={index}>
+        <div className="p-1" key={indexParent}>
           <div className="quran text-2xl text-[#0d4643] text-right   mt-5 mb-5 mr-3">
             {/* {bluredAwal ? <span className="blur">{ayat}</span> : ayat} */}
             {/* // make the span not only one line */}
             <div className="flex flex-wrap flex-row-reverse">
               {ayat.split(' ').map((ayat: any, index: number) => {
                 return (
-                  <div key={index} className=" my-1">
+                  <div
+                    key={index}
+                    className=" my-1 hidden"
+                    id={`${indexParent}-${index.toString()}`}
+                  >
                     {ayat}
                   </div>
                 );
@@ -346,7 +356,10 @@ export default function Tabs({ ayat, data }: any) {
             </div>
           </div>
         </div>
-        <div className="bg-gray-100 text-center text-gray-400 text-sm divide-x divide-dashed divide-gray-300 p-3">
+        <div
+          id={`${indexParent}`}
+          className="bg-gray-100 text-center text-gray-400 text-sm divide-x divide-dashed divide-gray-300 p-3"
+        >
           <span>
             {/* render button based on length count */}
             {/* {Array.from({ length: length }).map((item, index) => { */}
@@ -355,6 +368,50 @@ export default function Tabs({ ayat, data }: any) {
                 <button
                   key={index}
                   className="px-2 mx-2 my-2 text-lg border-dashed border-teal-300 border"
+                  // id={`choice-${index.toString}`}
+                  id={`choice-${indexParent.toString()}-${index.toString()}`}
+                  onClick={() => {
+                    console.log(indexParent);
+                    console.log(index);
+                    console.log(idx);
+
+                    if (idx === index) {
+                      idx++;
+                      const classAyatHidden = document.getElementById(
+                        `${indexParent?.toString()}-${index.toString()}`
+                      )?.classList;
+                      // add class hidden
+                      classAyatHidden?.remove('hidden');
+
+                      const classChoiceHidden = document.getElementById(
+                        `choice-${indexParent.toString()}-${index.toString()}`
+                      )?.classList;
+                      // remove class hidden
+                      console.log(`choice-${index.toString()}`);
+                      console.log(classChoiceHidden);
+                      classChoiceHidden?.add('hidden');
+                    } else {
+                      // <Modal
+                      //   isOpen={isOpen}
+                      //   onToggle={handleToogle}
+                      //   title="Rekam"
+                      //   description="TODO: make this function work"
+                      //   button="Close"
+                      // />;
+                      // alert('salah');
+                      setIsOpen(true);
+                      setModalTitle('Salah');
+                      setModalDesc('Pikir2 lagi cuyyyy');
+                    }
+                    if (idx === lengthAyat) {
+                      console.log('done');
+                      idx = 0;
+                      const classChoiceSection = document.getElementById(
+                        `${indexParent?.toString()}`
+                      )?.classList;
+                      classChoiceSection?.add('hidden');
+                    }
+                  }}
                 >
                   {ayat}
                 </button>
@@ -449,8 +506,8 @@ export default function Tabs({ ayat, data }: any) {
       <Modal
         isOpen={isOpen}
         onToggle={handleToogle}
-        title="Rekam"
-        description="TODO: make this function work"
+        title={modalTitle}
+        description={modalDesc}
         button="Close"
       />
     </div>
