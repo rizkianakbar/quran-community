@@ -53,6 +53,7 @@ export default function Tabs({ ayat, data }: any) {
   const [bluredAcak, setBluredAcak] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
   const [modalDesc, setModalDesc] = useState('');
+  const [indexWhatever, setIndexWhatever] = useState(1);
 
   // console.log(ayat);
   // console.log(data);
@@ -333,7 +334,6 @@ export default function Tabs({ ayat, data }: any) {
   });
 
   const renderPuzzle = ayat?.map((ayat: any, indexParent: number) => {
-    let idx = 0;
     const lengthAyat = ayat.split(' ').length;
     return (
       <>
@@ -371,12 +371,12 @@ export default function Tabs({ ayat, data }: any) {
                   // id={`choice-${index.toString}`}
                   id={`choice-${indexParent.toString()}-${index.toString()}`}
                   onClick={() => {
-                    console.log(indexParent);
-                    console.log(index);
-                    console.log(idx);
+                    console.log('length', lengthAyat);
+                    console.log('indexWhatever', indexWhatever);
+                    console.log(index + 1);
 
-                    if (idx === index) {
-                      idx++;
+                    if (indexWhatever === index + 1) {
+                      setIndexWhatever(indexWhatever + 1);
                       const classAyatHidden = document.getElementById(
                         `${indexParent?.toString()}-${index.toString()}`
                       )?.classList;
@@ -387,25 +387,16 @@ export default function Tabs({ ayat, data }: any) {
                         `choice-${indexParent.toString()}-${index.toString()}`
                       )?.classList;
                       // remove class hidden
-                      console.log(`choice-${index.toString()}`);
-                      console.log(classChoiceHidden);
                       classChoiceHidden?.add('hidden');
                     } else {
-                      // <Modal
-                      //   isOpen={isOpen}
-                      //   onToggle={handleToogle}
-                      //   title="Rekam"
-                      //   description="TODO: make this function work"
-                      //   button="Close"
-                      // />;
-                      // alert('salah');
                       setIsOpen(true);
                       setModalTitle('Salah');
                       setModalDesc('Pikir2 lagi cuyyyy');
                     }
-                    if (idx === lengthAyat) {
+
+                    if (indexWhatever === lengthAyat) {
                       console.log('done');
-                      idx = 0;
+                      setIndexWhatever(1);
                       const classChoiceSection = document.getElementById(
                         `${indexParent?.toString()}`
                       )?.classList;
