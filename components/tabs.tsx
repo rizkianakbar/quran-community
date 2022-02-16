@@ -7,6 +7,7 @@ import {
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import Modal from './modal';
 
 const tabClasses = (isActive?: boolean) => {
   return [
@@ -48,11 +49,14 @@ export default function Tabs({ ayat, data }: any) {
   const [bluredTengah, setBluredTengah] = useState(false);
   const [bluredAkhir, setBluredAkhir] = useState(false);
   const [bluredAwalAkhir, setBluredAwalAkhir] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [bluredAcak, setBluredAcak] = useState(false);
 
   // console.log(ayat);
   // console.log(data);
-
+  const handleToogle = () => {
+    setIsOpen(!isOpen);
+  };
   const [parenTab] = useState([
     {
       id: 1,
@@ -65,7 +69,7 @@ export default function Tabs({ ayat, data }: any) {
       id: 2,
       title: 'Rekam',
       onclick: () => {
-        setIsSelectedParent('Rekam');
+        setIsOpen(true);
       },
     },
     {
@@ -243,37 +247,47 @@ export default function Tabs({ ayat, data }: any) {
     return (
       <>
         <div className="p-1" key={index}>
-          <p className="quran text-2xl text-[#0d4643] text-right mt-5 mb-5 mr-3">
-            {/* {bluredAwal ? <span className="blur">{ayat}</span> : ayat} */}
-            {/* // make the span not only one line */}
-            <div className="flex flex-wrap flex-row-reverse">
-              {ayat.split(' ').map((ayat: any, index: number) => {
-                console.log(ayat);
-
-                return (
-                  <div key={index} className=" my-1">
-                    {bluredAwal && index !== 0 ? (
-                      <span className="blur">{ayat}</span>
-                    ) : bluredTengah && index !== 1 && index !== 2 ? (
-                      <span className="blur">{ayat}</span>
-                    ) : bluredAkhir && index !== idx - 1 ? (
-                      <span className="blur">{ayat}</span>
-                    ) : bluredAwalAkhir && index !== 0 && index !== idx - 1 ? (
-                      <span className="blur">{ayat}</span>
-                    ) : bluredAcak && index !== idx % 2 && index !== idx % 2 ? (
-                      <span className="blur">{ayat}</span>
-                    ) : (
-                      ayat
-                    )}
-                  </div>
-                );
-              })}
+          {isSelectedChild === '#1' || isSelectedChild === '#2' ? (
+            <div className="quran text-2xl text-[#0d4643] text-right mt-5 mb-5 mr-3">
+              {/* {bluredAwal ? <span className="blur">{ayat}</span> : ayat} */}
+              {/* // make the span not only one line */}
+              <div className="flex flex-wrap flex-row-reverse">
+                {ayat.split(' ').map((ayat: any, index: number) => {
+                  return (
+                    <div key={index} className=" my-1">
+                      {bluredAwal && index !== 0 ? (
+                        <span className="blur">{ayat}</span>
+                      ) : bluredTengah && index !== 1 && index !== 2 ? (
+                        <span className="blur">{ayat}</span>
+                      ) : bluredAkhir && index !== idx - 1 ? (
+                        <span className="blur">{ayat}</span>
+                      ) : bluredAwalAkhir &&
+                        index !== 0 &&
+                        index !== idx - 1 ? (
+                        <span className="blur">{ayat}</span>
+                      ) : bluredAcak &&
+                        index !== idx % 2 &&
+                        index !== idx % 2 ? (
+                        <span className="blur">{ayat}</span>
+                      ) : (
+                        ayat
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </p>
-          <p className="text-gray-500 text-sm ml-2">
-            <span>( {index + 1} ) </span>
-            {data.translations.id.text[index + 1]}
-          </p>
+          ) : (
+            ''
+          )}
+          {isSelectedChild === '#1' || isSelectedChild === '#3' ? (
+            <p className="text-gray-500 text-sm ml-2 my-2">
+              <span>( {index + 1} ) </span>
+              {data.translations.id.text[index + 1]}
+            </p>
+          ) : (
+            ''
+          )}
         </div>
         <div className="bg-gray-100 text-center text-gray-400 text-sm divide-x divide-dashed divide-gray-300">
           {buttonData.map((item, index) => {
@@ -314,20 +328,77 @@ export default function Tabs({ ayat, data }: any) {
     );
   });
 
+  const renderPuzzle = ayat?.map((ayat: any, index: number) => {
+    return (
+      <>
+        <div className="p-1" key={index}>
+          <div className="quran text-2xl text-[#0d4643] text-right   mt-5 mb-5 mr-3">
+            {/* {bluredAwal ? <span className="blur">{ayat}</span> : ayat} */}
+            {/* // make the span not only one line */}
+            <div className="flex flex-wrap flex-row-reverse">
+              {ayat.split(' ').map((ayat: any, index: number) => {
+                return (
+                  <div key={index} className=" my-1">
+                    {ayat}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+        <div className="bg-gray-100 text-center text-gray-400 text-sm divide-x divide-dashed divide-gray-300 p-3">
+          <span>
+            {/* render button based on length count */}
+            {/* {Array.from({ length: length }).map((item, index) => { */}
+            {ayat.split(' ').map((ayat: any, index: number) => {
+              return (
+                <button
+                  key={index}
+                  className="px-2 mx-2 my-2 text-lg border-dashed border-teal-300 border"
+                >
+                  {ayat}
+                </button>
+              );
+            })}
+          </span>
+        </div>
+      </>
+    );
+  });
+
+  const PageDescription = ({ desc }: any) => {
+    return (
+      <>
+        <div className="flex justify-center bg-teal-100/40 p-2">
+          <p className="text-sm text-teal-500 text-center">
+            Menghafal Surah {data.name_latin} : {firstAyat}-{secondAyat} <br />
+            <br />
+            {desc}
+            {/* Hafalkan dengan teliti target hafalan arabic dan terjemahannya,
+            ulangi muratal sebanyak-banyaknya sampai hafal */}
+          </p>
+        </div>
+      </>
+    );
+  };
+
   return (
     <div className="w-full mx-auto">
       <div className="flex justify-center bg-white">{renderParentTab}</div>
-      {isSelectedParent === 'Linier' && (
+      {isSelectedParent === 'Linier' ? (
         <>
-          <div className="flex justify-center bg-teal-100/40 p-2">
-            <p className="text-sm text-teal-500 text-center">
-              Menghafal Surah {data.name_latin} : {firstAyat}-{secondAyat}{' '}
-              <br />
-              <br />
-              Hafalkan dengan teliti target hafalan arabic dan terjemahannya,
-              ulangi muratal sebanyak-banyaknya sampai hafal
-            </p>
-          </div>
+          {isSelectedChild === '#1' ? (
+            <PageDescription
+              desc="Hafalkan dengan teliti target hafalan arabic dan terjemahannya,
+              ulangi muratal sebanyak-banyaknya sampai hafal"
+            />
+          ) : isSelectedChild === '#2' ? (
+            <PageDescription desc="Hafalkan dengan teliti target hafalan arabic" />
+          ) : isSelectedChild === '#3' ? (
+            <PageDescription desc="Fokuskan hafalan terjemahannya dan pelajari tafsir ayatnya" />
+          ) : (
+            ''
+          )}
           <div className="flex justify-center bg-white p-2">
             {renderChildTab}
           </div>
@@ -343,13 +414,45 @@ export default function Tabs({ ayat, data }: any) {
               </div>
             </>
           )}
-          {isSelectedChild === '#2' && <div>Dua</div>}
-          {isSelectedChild === '#3' && <div>Tiga</div>}
+          {isSelectedChild === '#2' && (
+            <>
+              <div className="flex justify-center bg-white p-2">
+                {renderButton}
+              </div>
+              <div className="bg-white border-b-2 overflow-hidden rounded-b-md">
+                <div className="divide-y divide-dashed divide-gray-300">
+                  {renderAyat}
+                </div>
+              </div>
+            </>
+          )}
+          {isSelectedChild === '#3' && (
+            <div className="bg-white border-b-2 overflow-hidden rounded-b-md">
+              <div className="divide-y divide-dashed divide-gray-300">
+                {renderAyat}
+              </div>
+            </div>
+          )}
         </>
+      ) : isSelectedParent === 'Puzzle' ? (
+        <>
+          <PageDescription desc="PUZZLE...!! Cocokan kata yang hilang secara berurutan" />
+          <div className="bg-white border-b-2 overflow-hidden rounded-b-md">
+            <div className="divide-y divide-dashed divide-gray-300">
+              {renderPuzzle}
+            </div>
+          </div>
+        </>
+      ) : (
+        ''
       )}
-      {isSelectedParent === 'Puzzle' && (
-        <div className="flex justify-center bg-white">Puzzle</div>
-      )}
+      <Modal
+        isOpen={isOpen}
+        onToggle={handleToogle}
+        title="Rekam"
+        description="TODO: make this function work"
+        button="Close"
+      />
     </div>
   );
 }
