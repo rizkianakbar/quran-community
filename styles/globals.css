@@ -48,6 +48,7 @@ a {
 #nprogress .spinner-icon {
   border-top-color: #f3f4f6 !important;
   border-left-color: #f3f4f6 !important;
+  margin-top: -0.5rem !important;
   width: 2.5rem !important;
   height: 2.5rem !important;
 }
