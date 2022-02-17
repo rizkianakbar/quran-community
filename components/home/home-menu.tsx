@@ -3,9 +3,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { homepageMenus } from '@/lib/home-data';
 import Modal from '../ui/modal';
+import { Option, OptionSwitch } from '..';
+import Ziyadah from '@/pages/ziyadah';
 
 export function HomeMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const [bottomSheetTitle, setBottomSheetTitle] = useState('');
+  const [bottomSheetContent, setBottomSheetContent] = useState('') as any;
   const isLogin = false;
 
   const openModal = () => {
@@ -21,6 +25,14 @@ export function HomeMenu() {
     description: 'You need to login to access this page.',
     button: 'Got it, thanks!',
   };
+
+  const [open, setOpen] = useState(false);
+
+  const [option, setOption] = useState<Option>(Option.ReactSpringBottomSheet);
+
+  const onReady = () => setOpen(true);
+
+  const onDismiss = () => setOpen(false);
 
   return (
     <>
@@ -45,6 +57,17 @@ export function HomeMenu() {
                   {item.name}
                 </a>
               </Link>
+            ) : item.name === 'Ziyadah' ? (
+              <button
+                onClick={() => {
+                  setBottomSheetTitle('Ziyadah');
+                  setBottomSheetContent(<Ziyadah />);
+                  onReady();
+                }}
+                className="text-gray-900 font-semibold text-xs mt-3 helper-link-cover"
+              >
+                {item.name}
+              </button>
             ) : (
               <button
                 type="button"
@@ -63,6 +86,14 @@ export function HomeMenu() {
         title={dataModal.title}
         description={dataModal.description}
         button={dataModal.button}
+      />
+      <OptionSwitch
+        option={option}
+        open={open}
+        onReady={onReady}
+        onDismiss={onDismiss}
+        title={bottomSheetTitle}
+        content={bottomSheetContent}
       />
     </>
   );

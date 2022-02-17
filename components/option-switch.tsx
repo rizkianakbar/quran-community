@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { ReactElement, useEffect } from 'react';
 import {
   BottomSheetProps,
   ReactSpringBottomSheetUsage,
@@ -11,8 +11,8 @@ export enum Option {
 type OptionSwitchProps = BottomSheetProps & {
   option: Option;
   title: string;
-  content: string;
-  footer: string;
+  content: ReactElement | null;
+  footer?: string;
 };
 
 export const OptionSwitch = ({ option, ...props }: OptionSwitchProps) => {

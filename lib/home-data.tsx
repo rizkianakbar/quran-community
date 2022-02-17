@@ -23,7 +23,7 @@ export const homepageMenus: HomepageMenuItem[] = [
     name: 'Ziyadah',
     href: '/ziyadah',
     icon: HospitalIcon,
-    needLogin: false,
+    needLogin: true,
   },
   {
     name: 'Hafalan',

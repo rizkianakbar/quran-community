@@ -1,8 +1,10 @@
+import { ReactElement } from 'react';
+
 export type BottomSheetProps = {
   open: boolean;
   onDismiss: () => void;
   onReady: () => void;
   title: string;
-  content: string;
-  footer: string;
+  content: ReactElement | null;
+  footer?: string;
 };

@@ -20,7 +20,9 @@ export const ReactSpringBottomSheetUsage = React.forwardRef(
         ref={ref}
         open={open}
         onDismiss={onDismiss}
-        defaultSnap={({ snapPoints, lastSnap }) => lastSnap ?? snapPoints[1]}
+        defaultSnap={({ lastSnap, snapPoints }) =>
+          lastSnap ?? Math.max(...snapPoints)
+        }
         snapPoints={({ height, minHeight, maxHeight }) => [
           maxHeight - maxHeight / 5,
           Math.min(Math.max(height, minHeight), maxHeight * 0.525),
