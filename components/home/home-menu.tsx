@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
 import Link from 'next/link';
-import { homepageMenus } from '@/lib/home/homepage-menus';
-import Modal from '../modal';
+import { homepageMenus } from '@/lib/home-data';
+import Modal from '../ui/modal';
 
-export function HomePageMenu() {
+export function HomeMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const isLogin = false;
 

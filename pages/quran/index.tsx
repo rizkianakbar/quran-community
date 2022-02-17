@@ -1,9 +1,8 @@
-import { BackButton } from '@/components/layout/back-button';
-import { PageContent } from '@/components/layout/pages';
-import { Page } from '@/components/layout/pages/page';
+import { PageContent, PageSection } from '@/components/layout/pages';
 import { PageHeader } from '@/components/layout/pages/page-header';
 import { Search } from '@/components/search';
-import { SurahList } from '@/components/surah-list';
+import { SurahList } from '@/components/quran/quran-surah-list';
+import { ButtonBack } from '@/components/ui/button-back';
 import { useState } from 'react';
 
 export default function Quran() {
@@ -23,9 +22,9 @@ export default function Quran() {
   const description =
     'Rasulullah shallallahu ‘alaihi wasallam pernah bersabda, ‘Bacalah Al-Qur’an. Sebab, ia akan datang memberikan syafaat pada hari Kiamat kepada pemilik (pembaca, pengamal)-nya,” (HR. Ahmad).';
   return (
-    <Page>
+    <PageSection>
       <PageHeader
-        backButton={<BackButton href="/" />}
+        backButton={<ButtonBack href="/" />}
         breadcrumbs={breadcrumbs}
         description={description}
         title="Al-Quran"
@@ -34,6 +33,6 @@ export default function Quran() {
         <Search autoSearch fnCallback={fnCallback} />
         <SurahList dataFiltered={callback} />
       </PageContent>
-    </Page>
+    </PageSection>
   );
 }

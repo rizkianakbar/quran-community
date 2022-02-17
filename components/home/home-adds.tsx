@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import playstore from '../../public/playstore-logo.svg';
 
-export function HomePageEmergencyContactCTA() {
+export function HomeAdds() {
   return (
     <div className="rounded-sm">
       <div className="flex flex-row relative py-2 px-2 border-gray-100 border-2 rounded-lg justify-between">

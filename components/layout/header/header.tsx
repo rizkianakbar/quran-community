@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { createElement, useRef } from 'react';
-import { Container } from '../ui/container';
+import { Container } from '../container';
 import { Popover } from '@headlessui/react';
-import { NavigationMenuPopover, navMenuButtonIcon } from './navigation-menu';
+import { NavigationMenuPopover, navMenuButtonIcon } from '../nav/nav-menu';
 
-export const GlobalHeader = () => {
+export const Header = () => {
   const popoverButtonRef = useRef<HTMLButtonElement>(null);
 
   return (

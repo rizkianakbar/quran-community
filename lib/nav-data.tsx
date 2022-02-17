@@ -5,7 +5,7 @@ import {
   SearchIcon,
   BellIcon,
   UserCircleIcon,
-} from '@heroicons/react/outline';
+} from '@heroicons/react/solid';
 
 export interface NavigationItem {
   name: string;

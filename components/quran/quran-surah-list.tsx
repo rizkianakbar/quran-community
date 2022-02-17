@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { surahList } from '../lib/surah/surah-list';
+import { surahList } from '../../lib/surah/surah-list';
 
 export function SurahList({ dataFiltered }: any) {
   const data = () => {

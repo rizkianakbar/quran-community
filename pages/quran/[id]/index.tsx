@@ -1,12 +1,12 @@
-import { Page, PageContent } from '@/components/layout/pages';
+import { PageContent, PageSection } from '@/components/layout/pages';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { paths } from '@/lib/surah/surah-list';
 import { PageHeader } from '@/components/layout/pages/page-header';
-import { BackButton } from '@/components/layout/back-button';
-import { QuranDetails } from '@/components/quran-details';
-import { HeaderQuran } from '@/components/header-quran';
-import { QuranForm } from '@/components/quran-form';
+import { QuranDetails } from '@/components/quran/quran-details';
+import { ButtonBack } from '@/components/ui/button-back';
+import { QuranForm } from '@/components/quran/quran-form';
+import { QuranHeader } from '@/components/quran/quran-header';
 
 export default function QuranDetail({ surah }: any) {
   const router = useRouter();
@@ -14,9 +14,9 @@ export default function QuranDetail({ surah }: any) {
   const data = JSON.parse(surah)[`${id}`];
   const title = `${id}. Surah ${data.name_latin}`;
   return (
-    <Page>
+    <PageSection>
       <PageHeader
-        backButton={<BackButton href="/quran" />}
+        backButton={<ButtonBack href="/quran" />}
         breadcrumbs={[
           {
             name: 'Quran',
@@ -32,11 +32,11 @@ export default function QuranDetail({ surah }: any) {
         title=""
       />
       <PageContent>
-        <HeaderQuran title={title} />
+        <QuranHeader title={title} />
         <QuranForm data={data} />
         <QuranDetails data={data} />
       </PageContent>
-    </Page>
+    </PageSection>
   );
 }
 

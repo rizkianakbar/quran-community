@@ -1,20 +1,20 @@
-import { HomePageContent } from '@/components/home/homepage-content';
-import { HomepageHeader } from '@/components/home/homepage-header';
-import { HomePageStart } from '@/components/home/homepage-start';
-import { Page } from '@/components/layout/pages/page';
-import { Container } from '@/components/ui/container';
+import { HomeContent } from '@/components/home/home-content';
+import { HomeHeader } from '@/components/home/home-header';
+import { HomePageStart } from '@/components/home/home-start';
+import { PageSection } from '@/components/layout/pages';
+import { Container } from '@/components/layout/container';
 import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
   return (
-    <Page>
-      <HomepageHeader />
-      <HomePageContent>
+    <PageSection>
+      <HomeHeader />
+      <HomeContent>
         <Container className="space-y-3">
           <HomePageStart />
         </Container>
-      </HomePageContent>
-    </Page>
+      </HomeContent>
+    </PageSection>
   );
 };
 

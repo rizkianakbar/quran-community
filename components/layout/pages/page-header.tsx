@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container } from '../../ui/container';
+import { Container } from '../container';
 import { Breadcrumb, BreadcrumbItem } from '@/components/ui/breadcrumb';
 
 export interface PageHeaderProps {

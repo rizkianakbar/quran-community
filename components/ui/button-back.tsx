@@ -3,9 +3,9 @@ import * as React from 'react';
 import { ChevronLeftIcon } from '@heroicons/react/solid';
 import Link, { LinkProps } from 'next/link';
 
-type BackButtonProps = LinkProps;
+type ButtonBackProps = LinkProps;
 
-export function BackButton(props: BackButtonProps) {
+export function ButtonBack(props: ButtonBackProps) {
   return (
     <nav aria-label="Back" className="sm:hidden">
       <Link {...props}>

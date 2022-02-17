@@ -2,7 +2,7 @@ import React from 'react';
 
 import clsx from 'clsx';
 
-export const HomePageSection = React.forwardRef<
+export const HomeSection = React.forwardRef<
   HTMLElement,
   React.ComponentProps<'section'>
 >(({ className, style, children, ...rest }, ref) => {
@@ -18,4 +18,4 @@ export const HomePageSection = React.forwardRef<
   );
 });
 
-HomePageSection.displayName = 'HomePageSection';
+HomeSection.displayName = 'HomePageSection';

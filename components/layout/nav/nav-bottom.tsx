@@ -3,10 +3,7 @@ import { createElement } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import {
-  bottomNavigation,
-  NavigationItem,
-} from '../../lib/home/navigation-data';
+import { bottomNavigation, NavigationItem } from '@/lib/nav-data';
 
 const navigationClasses = (isActive?: boolean) => {
   return [

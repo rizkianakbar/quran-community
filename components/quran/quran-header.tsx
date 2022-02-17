@@ -1,7 +1,7 @@
 import { ExclamationCircleIcon } from '@heroicons/react/solid';
 import React from 'react';
 
-export function HeaderQuran({ title }: any) {
+export function QuranHeader({ title }: any) {
   return (
     <>
       <div className="bg-[#E0EFEE] p-5 text-center text-[#20b2aa] rounded font-bold">

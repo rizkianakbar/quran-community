@@ -5,7 +5,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Example() {
+export default function Tabs() {
   const [categories] = useState({
     Sedang_Menghafal: [
       {

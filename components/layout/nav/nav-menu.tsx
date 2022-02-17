@@ -1,10 +1,10 @@
 import { RefObject, useEffect } from 'react';
 import { Popover } from '@headlessui/react';
-import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { MenuIcon, XIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { navMenu } from '../../lib/home/navigation-data';
+import { navMenu } from '@/lib/nav-data';
 
 const navMenuClasses = (isActive?: boolean) => {
   return [

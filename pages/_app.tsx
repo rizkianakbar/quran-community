@@ -2,7 +2,7 @@ import '../styles/globals.css';
 import 'nprogress/nprogress.css';
 
 import type { AppProps } from 'next/app';
-import { LayoutRoot } from '../components/layout/layout-root';
+import { Layout } from '../components/layout/layout';
 import Head from 'next/head';
 import nProgress from 'nprogress';
 import { useEffect } from 'react';
@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   }, [router]);
 
   return (
-    <LayoutRoot>
+    <Layout>
       <Head>
         <title>QuranMemo</title>
         <link rel="icon" href="/favicon.ico" />
@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <meta content="#5EEAD3" name="theme-color" />
       </Head>
       <Component {...pageProps} />
-    </LayoutRoot>
+    </Layout>
   );
 }
 

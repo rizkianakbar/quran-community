@@ -1,13 +1,8 @@
-import {
-  BookmarkIcon,
-  PlayIcon,
-  PlusIcon,
-  ShareIcon,
-} from '@heroicons/react/solid';
+import { BookmarkIcon, PlayIcon, ShareIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import Modal from './modal';
+import Modal from './ui/modal';
 
 const tabClasses = (isActive?: boolean) => {
   return [
@@ -39,7 +34,7 @@ const btnClasses = (isActive?: boolean) => {
   ];
 };
 
-export default function Tabs({ ayat, data }: any) {
+export default function Memorization({ ayat, data }: any) {
   const router = useRouter();
   const { id, firstAyat, secondAyat } = router.query;
   const [isSelectedParent, setIsSelectedParent] = useState('Linier');

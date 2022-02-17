@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import { paths } from '@/lib/surah/surah-list';
 import { GetStaticProps } from 'next';
-import { Page } from '@/components/layout/pages';
-import Tabs from '@/components/tabs';
+import Tabs from '@/components/memorization';
+import { PageSection } from '@/components/layout/pages';
 
 export default function ZiyadahDetail({ surah }: any) {
   const router = useRouter();
@@ -23,13 +23,13 @@ export default function ZiyadahDetail({ surah }: any) {
   }
 
   return (
-    <Page>
+    <PageSection>
       <div className="flex flex-col flex-1 pb-12">
         <div className="w-full sm:max-w-xl mx-auto">
           <Tabs ayat={ayat} data={data} />
         </div>
       </div>
-    </Page>
+    </PageSection>
   );
 }
 

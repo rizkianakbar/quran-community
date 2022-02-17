@@ -6,7 +6,7 @@ import {
 } from '@heroicons/react/solid';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import Modal from './modal';
+import Modal from '../ui/modal';
 
 const calc = (input: any) => {
   let result = '';

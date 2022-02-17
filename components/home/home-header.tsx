@@ -1,9 +1,8 @@
 import Image from 'next/image';
-import { Container } from '../ui/container';
-
+import { Container } from '../layout/container';
 import banner from '../../public/banner.png';
 
-export function HomepageHeader() {
+export function HomeHeader() {
   return (
     <header>
       <Container>

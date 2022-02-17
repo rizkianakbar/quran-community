@@ -1,2 +1,2 @@
-export * from './page';
+export * from './page-section';
 export * from './page-content';
