@@ -74,9 +74,4 @@ export const homepageMenus: HomepageMenuItem[] = [
     icon: DonationIcon,
     needLogin: true,
   },
-  // {
-  //   name: 'Quran Mapping',
-  //   href: '/',
-  //   icon: DonationIcon,
-  // },
 ];

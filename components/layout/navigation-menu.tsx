@@ -32,8 +32,6 @@ export function NavigationMenuPopover({
 }: NavigationMenuPopoverProps) {
   const router = useRouter();
 
-  // Fake a click event on the popover button when the route changes
-  // since we can't programatically control the `Popover` state.
   useEffect(() => {
     const handleRouteChange = () => {
       if (open && popoverButtonRef?.current) {

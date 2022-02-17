@@ -17,7 +17,6 @@ export default function Quran() {
   ];
 
   const fnCallback = (data: any) => {
-    // console.log('data', data);
     setCallback(data);
   };
 

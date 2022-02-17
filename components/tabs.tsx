@@ -55,8 +55,6 @@ export default function Tabs({ ayat, data }: any) {
   const [modalDesc, setModalDesc] = useState('');
   const [indexWhatever, setIndexWhatever] = useState(1);
 
-  // console.log(ayat);
-  // console.log(data);
   const handleToogle = () => {
     setIsOpen(!isOpen);
   };
@@ -254,8 +252,6 @@ export default function Tabs({ ayat, data }: any) {
         <div className="p-1" key={index}>
           {isSelectedChild === '#1' || isSelectedChild === '#2' ? (
             <div className="quran text-2xl text-[#0d4643] text-right mt-5 mb-5 mr-3">
-              {/* {bluredAwal ? <span className="blur">{ayat}</span> : ayat} */}
-              {/* // make the span not only one line */}
               <div className="flex flex-wrap flex-row-reverse">
                 {ayat.split(' ').map((ayat: any, index: number) => {
                   return (
@@ -300,25 +296,19 @@ export default function Tabs({ ayat, data }: any) {
               <span key={item.text}>
                 <button
                   className="px-2 hover:bg-[#5EEAD3] hover:text-white"
-                  // check if onclick is true and then add onclick event
-                  // and give parameter onclickplay
-
                   {...(item.onclick === 'play'
                     ? {
                         onClick: () => {
-                          // onClickPlay(i + 1);
-                          // console.log('asdasd');
+                          // console.log('play');
                         },
                       }
                     : item.onclick === 'tafsir'
                     ? {
                         onClick: () => {
-                          // console.log('asdasd');
-                          // onClickTafsir(i + 1);
+                          // console.log('tafsir');
                         },
                       }
                     : {})}
-                  // onClick={item.onclick ? onClickPlay : }
                 >
                   {React.createElement(item.icon, {
                     className: 'h-5 inline-block mr-1',
@@ -339,8 +329,6 @@ export default function Tabs({ ayat, data }: any) {
       <>
         <div className="p-1" key={indexParent}>
           <div className="quran text-2xl text-[#0d4643] text-right   mt-5 mb-5 mr-3">
-            {/* {bluredAwal ? <span className="blur">{ayat}</span> : ayat} */}
-            {/* // make the span not only one line */}
             <div className="flex flex-wrap flex-row-reverse">
               {ayat.split(' ').map((ayat: any, index: number) => {
                 return (
@@ -361,14 +349,11 @@ export default function Tabs({ ayat, data }: any) {
           className="bg-gray-100 text-center text-gray-400 text-sm divide-x divide-dashed divide-gray-300 p-3"
         >
           <span>
-            {/* render button based on length count */}
-            {/* {Array.from({ length: length }).map((item, index) => { */}
             {ayat.split(' ').map((ayat: any, index: number) => {
               return (
                 <button
                   key={index}
                   className="px-2 mx-2 my-2 text-lg border-dashed border-teal-300 border"
-                  // id={`choice-${index.toString}`}
                   id={`choice-${indexParent.toString()}-${index.toString()}`}
                   onClick={() => {
                     console.log('length', lengthAyat);
@@ -380,13 +365,11 @@ export default function Tabs({ ayat, data }: any) {
                       const classAyatHidden = document.getElementById(
                         `${indexParent?.toString()}-${index.toString()}`
                       )?.classList;
-                      // add class hidden
                       classAyatHidden?.remove('hidden');
 
                       const classChoiceHidden = document.getElementById(
                         `choice-${indexParent.toString()}-${index.toString()}`
                       )?.classList;
-                      // remove class hidden
                       classChoiceHidden?.add('hidden');
                     } else {
                       setIsOpen(true);

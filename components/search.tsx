@@ -5,7 +5,6 @@ export function Search({ autoSearch, fnCallback }: any) {
   const handleKeywordsChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newKeywords = event.target.value;
     setKeywords(newKeywords);
-    // console.log('newKeywords', newKeywords);
     fnCallback(newKeywords);
   };
 
@@ -24,7 +23,6 @@ export function Search({ autoSearch, fnCallback }: any) {
           id="search"
           onChange={handleKeywordsChange}
           placeholder="Cari surah"
-          // value={keywords}
         />
       </div>
     </div>

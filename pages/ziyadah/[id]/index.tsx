@@ -44,8 +44,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params?.id;
   const surah = await import(`../../../lib/surah/${id}.json`);
 
-  // console.log(JSON.stringify(surah));
-
   return {
     props: {
       surah: JSON.stringify(surah),

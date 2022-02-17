@@ -2,8 +2,6 @@ import Link from 'next/link';
 import { surahList } from '../lib/surah/surah-list';
 
 export function SurahList({ dataFiltered }: any) {
-  // console.log('ini di surah list', dataFiltered);
-
   const data = () => {
     if (dataFiltered) {
       return surahList.filter((item: any) => {

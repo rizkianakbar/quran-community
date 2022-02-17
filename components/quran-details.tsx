@@ -26,8 +26,6 @@ export function QuranDetails({ data }: any) {
   const { text, translations } = data;
   const { id } = router.query;
 
-  // console.log('data', data.tafsir.id.kemenag.text[1]);
-
   const handleToogle = () => {
     setIsOpen(!isOpen);
   };
@@ -102,9 +100,6 @@ export function QuranDetails({ data }: any) {
               <span key={item.text}>
                 <button
                   className="px-2 hover:bg-[#5EEAD3] hover:text-white"
-                  // check if onclick is true and then add onclick event
-                  // and give parameter onclickplay
-
                   {...(item.onclick === 'play'
                     ? {
                         onClick: () => {
@@ -118,7 +113,6 @@ export function QuranDetails({ data }: any) {
                         },
                       }
                     : {})}
-                  // onClick={item.onclick ? onClickPlay : }
                 >
                   {React.createElement(item.icon, {
                     className: 'h-5 inline-block mr-1',

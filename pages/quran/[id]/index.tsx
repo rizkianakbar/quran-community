@@ -12,7 +12,6 @@ export default function QuranDetail({ surah }: any) {
   const router = useRouter();
   const { id } = router.query;
   const data = JSON.parse(surah)[`${id}`];
-  // console.log(data);
   const title = `${id}. Surah ${data.name_latin}`;
   return (
     <Page>
