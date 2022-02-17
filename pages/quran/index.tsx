@@ -1,6 +1,6 @@
+import { Search } from '@/components';
 import { PageContent, PageSection } from '@/components/layout/pages';
 import { PageHeader } from '@/components/layout/pages/page-header';
-import { Search } from '@/components/search';
 import { SurahList } from '@/components/quran/quran-surah-list';
 import { ButtonBack } from '@/components/ui/button-back';
 import { useState } from 'react';
