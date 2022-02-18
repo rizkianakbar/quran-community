@@ -1,11 +1,12 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
+import { Button } from '../button/button';
 
 export default function Modal({
   isOpen,
   onToggle,
   title,
-  description,
+  content,
   button,
 }: any) {
   return (
@@ -49,17 +50,20 @@ export default function Modal({
                   {title}
                 </Dialog.Title>
                 <div className="mt-2">
-                  <p className="text-sm text-gray-500">{description}</p>
+                  <p className="text-sm text-gray-500">{content}</p>
                 </div>
 
                 <div className="mt-4">
-                  <button
+                  {/* <button
                     type="button"
                     className="inline-flex justify-center px-4 py-2 text-sm font-medium bg-[#E0EFEE] text-[#20b2aa] border border-transparent rounded-md hover:bg-[#5EEAD3] hover:text-whites"
                     onClick={onToggle}
                   >
                     {button}
-                  </button>
+                  </button> */}
+                  <Button onClick={onToggle} primary>
+                    {button}
+                  </Button>
                 </div>
               </div>
             </Transition.Child>

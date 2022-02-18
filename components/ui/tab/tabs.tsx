@@ -61,17 +61,17 @@ export default function Tabs() {
     <div className="w-full px-2 py-10 px-4 mx-auto">
       {/* make it center */}
       <Tab.Group>
-        <Tab.List className="flex p-1 space-x-1 bg-blue-900/10 rounded-xl">
+        <Tab.List className="flex p-1 space-x-1 bg-gray-200 rounded-xl">
           {Object.keys(categories).map((category) => (
             <Tab
               key={category}
               className={({ selected }) =>
                 classNames(
-                  'w-full py-2.5 text-sm text-black leading-5 font-medium rounded-lg',
-                  'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60',
+                  'w-full py-2.5 text-sm leading-5 font-medium rounded-lg',
+                  'focus:outline-none focus:ring-1 ring-offset-4 ring-offset-quranmemo-secondary ring-white ring-opacity-10',
                   selected
-                    ? 'bg-white shadow text-[#5EEAD3]'
-                    : 'text-black hover:bg-white/[0.12] hover:text-[#5EEAD3]'
+                    ? 'bg-white shadow text-quranmemo-primary'
+                    : 'text-black hover:bg-white/[0.12] hover:text-quranmemo-primary'
                 )
               }
             >
