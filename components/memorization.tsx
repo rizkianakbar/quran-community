@@ -2,25 +2,25 @@ import { BookmarkIcon, PlayIcon, ShareIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import Modal from './ui/modal';
+import Modal from './ui/modal/modal';
 
 const tabClasses = (isActive?: boolean) => {
   return [
     'text-sm font-bold w-full text-gray-400 p-3',
     isActive
-      ? 'border-b-2 border-teal-500 text-teal-400'
+      ? 'border-b-2 border-quranmemo-primary text-quranmemo-primary'
       : 'border-b-2 border-white',
-    'hover:border-b-2 hover:border-teal-500 hover:text-teal-400',
+    'hover:border-b-2 hover:border-quranmemo-primary hover:text-quranmemo-primary',
   ];
 };
 
 const tabChildClasses = (isActive?: boolean) => {
   return [
-    'text-sm font-bold w-[30px] h-[30px] rounded-full mr-10 last:mr-0 relative after:article:after after:content[""] after:absolute after:w-[42px] after:h-[2px] after:bg-teal-500 after:top-1/2 after:left-full last:after:content[""] last:after:absolute last:after:w-full last:after:h-[0px] last:after:bg-white last:after:top-1/2 last:after:left-full',
+    'text-sm font-bold w-[30px] h-[30px] rounded-full mr-10 last:mr-0 relative after:article:after after:content[""] after:absolute after:w-[42px] after:h-[2px] after:bg-quranmemo-primary after:top-1/2 after:left-full last:after:content[""] last:after:absolute last:after:w-full last:after:h-[0px] last:after:bg-white last:after:top-1/2 last:after:left-full',
     isActive
-      ? 'border border-teal-500 text-white bg-teal-400'
-      : 'border border-teal-500 text-teal-400',
-    'hover:border-2 hover:border-teal-500',
+      ? 'border border-quranmemo-primary text-white bg-quranmemo-primary'
+      : 'border border-quranmemo-primary text-quranmemo-primary',
+    'hover:border-2 hover:border-quranmemo-primary',
   ];
 };
 
@@ -28,9 +28,9 @@ const btnClasses = (isActive?: boolean) => {
   return [
     'text-[9px] font-bold w-full mx-1 rounded py-1',
     isActive
-      ? 'border border-teal-500 bg-teal-500 teal-white text-white'
-      : 'border border-teal-500 bg-white text-teal-400',
-    'hover:bg-teal-500 hover:text-white',
+      ? 'border border-quranmemo-primary bg-quranmemo-primary teal-white text-white'
+      : 'border border-quranmemo-primary bg-white text-quranmemo-primary',
+    'hover:bg-quranmemo-primary hover:text-white',
   ];
 };
 
@@ -348,7 +348,7 @@ export default function Memorization({ ayat, data }: any) {
               return (
                 <button
                   key={index}
-                  className="px-2 mx-2 my-2 text-lg border-dashed border-teal-300 border"
+                  className="px-2 mx-2 my-2 text-lg border-dashed border-quranmemo-primary border"
                   id={`choice-${indexParent.toString()}-${index.toString()}`}
                   onClick={() => {
                     console.log('length', lengthAyat);
@@ -395,8 +395,8 @@ export default function Memorization({ ayat, data }: any) {
   const PageDescription = ({ desc }: any) => {
     return (
       <>
-        <div className="flex justify-center bg-teal-100/40 p-2">
-          <p className="text-sm text-teal-500 text-center">
+        <div className="flex justify-center bg-quranmemo-soft p-2">
+          <p className="text-sm text-quranmemo-dark text-center">
             Menghafal Surah {data.name_latin} : {firstAyat}-{secondAyat} <br />
             <br />
             {desc}
@@ -476,7 +476,7 @@ export default function Memorization({ ayat, data }: any) {
         isOpen={isOpen}
         onToggle={handleToogle}
         title={modalTitle}
-        description={modalDesc}
+        content={modalDesc}
         button="Close"
       />
     </div>

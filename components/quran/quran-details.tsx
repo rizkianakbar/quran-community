@@ -6,7 +6,7 @@ import {
 } from '@heroicons/react/solid';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import Modal from '../ui/modal';
+import Modal from '../ui/modal/modal';
 
 const calc = (input: any) => {
   let result = '';
@@ -133,7 +133,7 @@ export function QuranDetails({ data }: any) {
         isOpen={isOpen}
         onToggle={handleToogle}
         title={`Tafsir ${data.name_latin} : ${indexAyah}`}
-        description={data.tafsir.id.kemenag.text[indexAyah]}
+        content={data.tafsir.id.kemenag.text[indexAyah]}
         button="Close"
       />
     </div>

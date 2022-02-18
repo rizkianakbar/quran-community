@@ -4,10 +4,10 @@ import React from 'react';
 export function QuranHeader({ title }: any) {
   return (
     <>
-      <div className="bg-[#E0EFEE] p-5 text-center text-[#20b2aa] rounded font-bold">
+      <div className="bg-quranmemo-soft p-5 text-center text-quranmemo-primary rounded font-bold">
         <h1 className="mb-5">{title}</h1>
         {/* when hover bounce */}
-        <button className="mb-5 bg-[#5EEAD3] px-3 py-1 text-white rounded mx-5 shadow-lg">
+        <button className="mb-5 bg-quranmemo-primary px-3 py-1 text-white rounded mx-5">
           {React.createElement(ExclamationCircleIcon, {
             className: 'h-5 inline-block mr-1',
           })}

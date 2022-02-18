@@ -8,8 +8,8 @@ import { bottomNavigation, NavigationItem } from '@/lib/nav-data';
 const navigationClasses = (isActive?: boolean) => {
   return [
     'inline-flex flex-col items-center justify-center text-center h-12 px-2 rounded-md',
-    isActive ? 'text-teal-300 font-semibold' : 'text-gray-600',
-    'hover:text-teal-300',
+    isActive ? 'text-quranmemo-primary font-semibold' : 'text-gray-600',
+    'hover:text-quranmemo-primary',
   ];
 };
 

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
+import { Button } from '../ui/button/button';
 
 export function QuranSelect({ surahList }: any) {
   const [selectedSurah, setSelectedSurah] = useState(1);
@@ -35,19 +36,19 @@ export function QuranSelect({ surahList }: any) {
       <select
         name="id"
         id="id"
-        className="w-full h-10 px-4 py-2 bg-white border border-gray-300 rounded-lg border-teal-300 text-gray-400"
+        className="w-full h-10 px-4 py-2 bg-white border border-gray-300 rounded-lg border-quranmemo-primary text-gray-400"
         onChange={onChangeSurah}
       >
         {option}
       </select>
-      <div className="flex justify-between md:justify-center xs:justify-start text-center mt-2 border rounded-lg border-teal-300">
+      <div className="flex justify-between md:justify-center xs:justify-start text-center mt-2 border rounded-lg border-quranmemo-primary">
         <input
           className="rounded-l-lg w-full text-center"
           type="text"
           placeholder="Ayat"
           onChange={onChangeFirstAyat}
         />
-        <span className="text-white bg-teal-300 w-full text-sm py-3">
+        <span className="text-white bg-quranmemo-primary w-full text-sm py-3">
           Sampai Ayat
         </span>
         <input
@@ -66,12 +67,16 @@ export function QuranSelect({ surahList }: any) {
             secondAyat,
           },
         }}
+        passHref
       >
-        <a>
-          <div className="bg-teal-300 mt-2 rounded-lg py-2 text-center text-white">
+        {/* <a>
+          <div className="bg-quranmemo-primary mt-2 rounded-lg py-2 text-center text-white">
             Hafalkan
           </div>
-        </a>
+        </a> */}
+        <Button className="w-full mt-2" primary>
+          Hafalkan
+        </Button>
       </Link>
     </>
   );

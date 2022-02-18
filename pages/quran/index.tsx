@@ -2,7 +2,7 @@ import { Search } from '@/components';
 import { PageContent, PageSection } from '@/components/layout/pages';
 import { PageHeader } from '@/components/layout/pages/page-header';
 import { SurahList } from '@/components/quran/quran-surah-list';
-import { ButtonBack } from '@/components/ui/button-back';
+import { ButtonBack } from '@/components/ui/button/button-back';
 import { useState } from 'react';
 
 export default function Quran() {

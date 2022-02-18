@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { paths } from '@/lib/surah/surah-list';
 import { PageHeader } from '@/components/layout/pages/page-header';
 import { QuranDetails } from '@/components/quran/quran-details';
-import { ButtonBack } from '@/components/ui/button-back';
+import { ButtonBack } from '@/components/ui/button/button-back';
 import { QuranForm } from '@/components/quran/quran-form';
 import { QuranHeader } from '@/components/quran/quran-header';
 

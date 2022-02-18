@@ -1,34 +1,63 @@
 import React from 'react';
-import { useState } from 'react';
 import Link from 'next/link';
 import { homepageMenus } from '@/lib/home-data';
-import Modal from '../ui/modal';
+import Modal from '../ui/modal/modal';
 import { Option, OptionSwitch } from '..';
 import Ziyadah from '@/pages/ziyadah';
+import { Reminder } from '../ui/reminder';
+
+interface IModal {
+  title: string;
+  content: JSX.Element | string;
+  button: string;
+}
 
 export function HomeMenu() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [bottomSheetTitle, setBottomSheetTitle] = useState('');
-  const [bottomSheetContent, setBottomSheetContent] = useState('') as any;
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [bottomSheetTitle, setBottomSheetTitle] = React.useState('');
+  const [bottomSheetContent, setBottomSheetContent] = React.useState('') as any;
+  const [open, setOpen] = React.useState(false);
+  const [option, setOption] = React.useState<Option>(
+    Option.ReactSpringBottomSheet
+  );
+  const [dataModal, setDataModal] = React.useState<IModal>({
+    title: '',
+    content: '',
+    button: '',
+  });
   const isLogin = false;
+
+  React.useEffect(() => {
+    const today = new Date();
+    const day = today.getDay();
+    if (day === 5) {
+      setIsOpen(true);
+      setDataModal({
+        title: 'Baca Al-Kahfi',
+        content: <Reminder />,
+        button: 'Got it, thanks!',
+      });
+    }
+  }, []);
 
   const openModal = () => {
     setIsOpen(true);
+    setDataModal({
+      title: 'Access to this page is restricted',
+      content: 'You need to login to access this page.',
+      button: 'Got it, thanks!',
+    });
   };
 
   const handleToogle = () => {
     setIsOpen(!isOpen);
   };
 
-  const dataModal = {
-    title: 'Access to this page is restricted',
-    description: 'You need to login to access this page.',
-    button: 'Got it, thanks!',
-  };
-
-  const [open, setOpen] = useState(false);
-
-  const [option, setOption] = useState<Option>(Option.ReactSpringBottomSheet);
+  // const dataModal = {
+  //   title: 'Access to this page is restricted',
+  //   content: 'You need to login to access this page.',
+  //   button: 'Got it, thanks!',
+  // };
 
   const onReady = () => setOpen(true);
 
@@ -84,7 +113,7 @@ export function HomeMenu() {
         isOpen={isOpen}
         onToggle={handleToogle}
         title={dataModal.title}
-        description={dataModal.description}
+        content={dataModal.content}
         button={dataModal.button}
       />
       <OptionSwitch
