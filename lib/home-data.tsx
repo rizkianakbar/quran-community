@@ -1,14 +1,11 @@
 import { UrlObject } from 'url';
 import React from 'react';
 import {
-  AmbulanceIcon,
   ContributionIcon,
   DonationIcon,
-  DonorIcon,
   EducationIcon,
-  HospitalIcon,
-  OxygenIcon,
 } from '@/components/ui/icons';
+import { BookOpenIcon, StarIcon } from '@heroicons/react/solid';
 
 export interface HomepageMenuItem {
   name: string;
@@ -22,37 +19,37 @@ export const homepageMenus: HomepageMenuItem[] = [
   {
     name: 'Ziyadah',
     href: '/ziyadah',
-    icon: HospitalIcon,
+    icon: EducationIcon,
     needLogin: true,
   },
   {
     name: 'Hafalan',
     href: '/',
-    icon: AmbulanceIcon,
+    icon: EducationIcon,
     needLogin: true,
   },
   {
     name: "Muraja'ah",
     href: '/',
-    icon: OxygenIcon,
+    icon: DonationIcon,
     needLogin: true,
   },
   {
     name: 'Quiz',
     href: '/',
-    icon: DonorIcon,
+    icon: EducationIcon,
     needLogin: true,
   },
   {
     name: 'Al-Quran',
     href: '/quran',
-    icon: EducationIcon,
+    icon: BookOpenIcon,
     needLogin: false,
   },
   {
     name: 'E-Learning',
     href: '/',
-    icon: DonationIcon,
+    icon: EducationIcon,
     needLogin: true,
   },
   {
@@ -65,13 +62,13 @@ export const homepageMenus: HomepageMenuItem[] = [
   {
     name: 'Pencapaian',
     href: '/',
-    icon: DonationIcon,
+    icon: StarIcon,
     needLogin: true,
   },
   {
     name: 'Amalam Yaumi',
     href: '/',
-    icon: DonationIcon,
+    icon: EducationIcon,
     needLogin: true,
   },
 ];

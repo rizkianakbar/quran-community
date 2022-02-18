@@ -76,7 +76,7 @@ export function HomeMenu() {
               className="flex items-center justify-center h-10 w-10 bg-[#5EEAD3] rounded-full"
             >
               {React.createElement(item.icon, {
-                className: 'h-6 w-6 text-brand-500',
+                className: 'h-6 w-6 text-white',
               })}
             </div>
             {/* if already login using link, if not open popup Modal */}
