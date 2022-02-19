@@ -107,13 +107,15 @@ export default function Tabs() {
                     <div className="flex flex-col ">
                       <div className="flex-1">
                         <div className="flex items-center">
-                          <Image
-                            src={post.photo}
-                            alt={post.name}
-                            width={60}
-                            height={60}
-                            className="rounded-full mr-2 object-cover object-top"
-                          />
+                          <div className="border-2 border-quranmemo-primary rounded-full w-[60px] h-[60px]">
+                            <Image
+                              src={post.photo}
+                              alt={post.name}
+                              width={70}
+                              height={70}
+                              className="rounded-full object-cover object-top"
+                            />
+                          </div>
                           <div className="flex-1 ml-2">
                             <div className="flex items-center">
                               <div className="flex-1 ml-2">
