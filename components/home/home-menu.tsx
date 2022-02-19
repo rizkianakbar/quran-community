@@ -73,6 +73,12 @@ export function HomeMenu() {
 
   const onDismiss = () => setOpen(false);
 
+  const callback = () => {
+    setBottomSheetTitle('Ziyadah');
+    setBottomSheetContent(<Ziyadah />);
+    onReady();
+  };
+
   return (
     <>
       <ul className="grid grid-cols-3 gap-3 sm:gap-6 sm:grid-cols-3">
@@ -115,7 +121,7 @@ export function HomeMenu() {
               <button
                 onClick={() => {
                   setBottomSheetTitle('Hafalan');
-                  setBottomSheetContent(<Hafalan />);
+                  setBottomSheetContent(<Hafalan callback={callback} />);
                   onReady();
                 }}
                 className="text-gray-900 font-semibold text-xs mt-3 helper-link-cover"

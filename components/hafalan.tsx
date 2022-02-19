@@ -13,7 +13,7 @@ const tabClasses = (isActive?: boolean) => {
   ];
 };
 
-export function Hafalan() {
+export function Hafalan({ callback }: { callback: any }) {
   const [isSelectedParent, setIsSelectedParent] = React.useState('Ziyadah');
   const [parenTab] = React.useState([
     {
@@ -63,7 +63,7 @@ export function Hafalan() {
           <Button
             className=""
             onClick={() => {
-              console.log('click');
+              callback();
             }}
             icon={BookOpenIcon}
           >
