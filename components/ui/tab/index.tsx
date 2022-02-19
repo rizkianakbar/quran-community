@@ -99,7 +99,10 @@ export default function Tabs() {
             >
               <ul className="divide-y-2 divide-quranmemo-secondary divide-dashed">
                 {posts.map((post) => (
-                  <li key={post.id} className="hover:bg-coolGray-100 p-4 ">
+                  <li
+                    key={post.id}
+                    className="hover:bg-coolGray-100 first:pt-0 pt-4 pb-4"
+                  >
                     {/* make a photo in left position and the text in right position and the date is in the right corner of the screen*/}
                     <div className="flex flex-col ">
                       <div className="flex-1">
@@ -141,17 +144,6 @@ export default function Tabs() {
                 ))}
               </ul>
             </Tab.Panel>
-            //         <a
-            //           href="#"
-            //           className={classNames(
-            //             'absolute inset-0 rounded-md',
-            //             'focus:z-10 focus:outline-none focus:ring-2 ring-blue-400'
-            //           )}
-            //         />
-            //       </li>
-            //     ))}
-            //   </ul>
-            // </Tab.Panel>
           ))}
         </Tab.Panels>
       </Tab.Group>
