@@ -1,7 +1,7 @@
 import Ziyadah from '@/pages/ziyadah';
 import React, { useState } from 'react';
 import { Option, OptionSwitch } from '..';
-import Tabs from '../ui/tab/tabs';
+import Tabs from '../ui/tab';
 import { HomeAdds } from './home-adds';
 import { HomeMenu } from './home-menu';
 import { HomeSection } from './home-section';
