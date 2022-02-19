@@ -20,12 +20,11 @@ export const ReactSpringBottomSheetUsage = React.forwardRef(
         ref={ref}
         open={open}
         onDismiss={onDismiss}
-        defaultSnap={({ lastSnap, snapPoints }) =>
-          lastSnap ?? Math.max(...snapPoints)
-        }
-        snapPoints={({ height, minHeight, maxHeight }) => [
-          maxHeight - maxHeight / 5,
-          Math.min(Math.max(height, minHeight), maxHeight * 0.525),
+        defaultSnap={({ maxHeight }) => maxHeight / 2}
+        snapPoints={({ maxHeight }) => [
+          maxHeight - maxHeight / 10,
+          maxHeight / 4,
+          maxHeight * 0.6,
         ]}
         expandOnContentDrag
         header={props.title}
