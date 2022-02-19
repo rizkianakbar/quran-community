@@ -105,13 +105,13 @@ button:active {
   --rsbs-mr: auto;
 }
 
-[data-rsbs-header='true'] {
-  box-shadow: 0 2px 0 rgba(46, 59, 66, 0.1) !important;
+/* [data-rsbs-header='true'] {
+  box-shadow: 0 1px 0 rgba(46, 59, 66, 0.1) !important;
 }
 
 [data-rsbs-footer='false'] {
   box-shadow: 0 -2px 0 rgba(46, 59, 66, 0.1) !important;
-}
+} */
 
 [data-rsbs-overlay='true'] {
   z-index: 9999 !important;

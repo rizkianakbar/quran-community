@@ -5,6 +5,7 @@ import Modal from '../ui/modal/modal';
 import { Option, OptionSwitch } from '..';
 import Ziyadah from '@/pages/ziyadah';
 import { Reminder } from '../ui/reminder';
+import { Hafalan } from '../hafalan';
 
 interface IModal {
   title: string;
@@ -80,12 +81,14 @@ export function HomeMenu() {
               })}
             </div>
             {/* if already login using link, if not open popup Modal */}
-            {isLogin || !item.needLogin ? (
-              <Link href={item.href}>
-                <a className="text-gray-900 font-semibold text-xs mt-3 helper-link-cover">
-                  {item.name}
-                </a>
-              </Link>
+            {!isLogin && item.needLogin ? (
+              <button
+                type="button"
+                className="text-gray-900 font-semibold text-xs mt-3 helper-link-cover"
+                onClick={openModal}
+              >
+                {item.name}
+              </button>
             ) : item.name === 'Ziyadah' ? (
               <button
                 onClick={() => {
@@ -97,14 +100,23 @@ export function HomeMenu() {
               >
                 {item.name}
               </button>
-            ) : (
+            ) : item.name === 'Hafalan' ? (
               <button
-                type="button"
+                onClick={() => {
+                  setBottomSheetTitle('Hafalan');
+                  setBottomSheetContent(<Hafalan />);
+                  onReady();
+                }}
                 className="text-gray-900 font-semibold text-xs mt-3 helper-link-cover"
-                onClick={openModal}
               >
                 {item.name}
               </button>
+            ) : (
+              <Link href={item.href}>
+                <a className="text-gray-900 font-semibold text-xs mt-3 helper-link-cover">
+                  {item.name}
+                </a>
+              </Link>
             )}
           </li>
         ))}
