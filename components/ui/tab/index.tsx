@@ -70,7 +70,7 @@ export default function Tabs() {
     <div className="w-full px-2 py-11 px-4 mx-auto">
       {/* make it center */}
       <Tab.Group>
-        <Tab.List className="flex p-1 space-x-1 bg-gray-200 rounded-xl">
+        <Tab.List className="flex p-1 space-x-1 bg-quranmemo-soft rounded-xl">
           {Object.keys(categories).map((category) => (
             <Tab
               key={category}
