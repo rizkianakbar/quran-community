@@ -126,6 +126,7 @@ export default function Tabs() {
                                 <Button
                                   className="text-xs"
                                   onClick={() => console.log('clicked')}
+                                  primary
                                 >
                                   Koreksi
                                 </Button>
