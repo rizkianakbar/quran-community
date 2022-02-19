@@ -32,7 +32,7 @@ export const homepageMenus: HomepageMenuItem[] = [
     name: "Muraja'ah",
     href: '/',
     icon: DonationIcon,
-    needLogin: true,
+    needLogin: false,
   },
   {
     name: 'Quiz',

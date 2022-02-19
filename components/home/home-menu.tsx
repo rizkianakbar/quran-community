@@ -41,13 +41,22 @@ export function HomeMenu() {
     }
   }, []);
 
-  const openModal = () => {
-    setIsOpen(true);
-    setDataModal({
-      title: 'Access to this page is restricted',
-      content: 'You need to login to access this page.',
-      button: 'Got it, thanks!',
-    });
+  const openModal = (name: string) => {
+    if (name === "Muraja'ah") {
+      setIsOpen(true);
+      setDataModal({
+        title: "Muraja'ah",
+        content: 'Hafalan belum ada.',
+        button: 'Tutup!',
+      });
+    } else {
+      setIsOpen(true);
+      setDataModal({
+        title: 'Access to this page is restricted',
+        content: 'You need to login to access this page.',
+        button: 'Got it, thanks!',
+      });
+    }
   };
 
   const handleToogle = () => {
@@ -85,7 +94,9 @@ export function HomeMenu() {
               <button
                 type="button"
                 className="text-gray-900 font-semibold text-xs mt-3 helper-link-cover"
-                onClick={openModal}
+                onClick={() => {
+                  openModal(item.name);
+                }}
               >
                 {item.name}
               </button>
@@ -108,6 +119,16 @@ export function HomeMenu() {
                   onReady();
                 }}
                 className="text-gray-900 font-semibold text-xs mt-3 helper-link-cover"
+              >
+                {item.name}
+              </button>
+            ) : item.name === "Muraja'ah" ? (
+              <button
+                type="button"
+                className="text-gray-900 font-semibold text-xs mt-3 helper-link-cover"
+                onClick={() => {
+                  openModal(item.name);
+                }}
               >
                 {item.name}
               </button>
