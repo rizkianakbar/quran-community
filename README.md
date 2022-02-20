@@ -1,18 +1,6 @@
 ## Quranmemo Clone
 
-## Tech Stack
-
-- NextJs
-- TypeScript
-- Tailwindcss
-- Headlessui
-- Nprogress
-- Heroicons
-- Husky
-- Prettier
-- Eslint
-
-- Next-pwa
+I made this project just for my learning tool or my way to implement what I've learned or explored, for the original app you can check and download it [here!](https://play.google.com/store/apps/details?id=com.ndeztea.quranmemocommunity&hl=en)
 
 ## Live Demo
 
