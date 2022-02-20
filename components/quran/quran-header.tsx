@@ -4,7 +4,7 @@ import React from 'react';
 export function QuranHeader({ title }: any) {
   return (
     <>
-      <div className="bg-quranmemo-soft p-5 text-center text-quranmemo-primary rounded-lg shadow font-bold">
+      <div className="bg-quranmemo-soft p-5 text-center text-quranmemo-dark rounded-lg shadow font-bold">
         <h1 className="mb-5">{title}</h1>
         {/* when hover bounce */}
         <button className="mb-5 bg-quranmemo-primary px-3 py-1 text-white rounded mx-5">
