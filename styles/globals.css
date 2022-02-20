@@ -26,6 +26,13 @@ a {
 * {
   box-sizing: border-box;
 }
+input,
+textarea,
+button,
+select {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+}
 
 input:focus,
 textarea:focus,
