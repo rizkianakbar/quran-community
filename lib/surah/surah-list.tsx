@@ -802,7 +802,7 @@ export const paths = [
   { params: { id: '107' } },
   { params: { id: '108' } },
   { params: { id: '109' } },
-  { params: { id: '100' } },
+  { params: { id: '110' } },
   { params: { id: '111' } },
   { params: { id: '112' } },
   { params: { id: '113' } },

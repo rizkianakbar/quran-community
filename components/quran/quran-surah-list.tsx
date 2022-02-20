@@ -34,7 +34,7 @@ export function SurahList({ dataFiltered }: any) {
     }
   };
   return (
-    <ul className="mt-3 grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-2 mt-10">
+    <ul className="mt-3 grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-2 mt-10 mb-6">
       {data().map((surah) => (
         <li className="col-span-1 flex shadow-sm rounded-md" key={surah.id}>
           <div className="bg-quranmemo-primary flex-shrink-0 flex items-center justify-center w-16 text-white text-sm font-medium rounded-l-md">

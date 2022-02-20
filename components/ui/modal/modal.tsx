@@ -61,7 +61,8 @@ export default function Modal({
                   >
                     {button}
                   </button> */}
-                  <Button onClick={onToggle} primary>
+
+                  <Button onClick={onToggle} primary className="px-4">
                     {button}
                   </Button>
                 </div>

@@ -24,7 +24,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       ref={ref}
       className={clsx(
         buttonBlockStyles(block, iconPosition),
-        'px-4 py-2 justify-center text-sm font-medium shadow rounded-md',
+        'px-2 py-2 justify-center text-sm font-medium shadow rounded-md',
         primary
           ? 'bg-quranmemo-primary text-white hover:bg-[#E0EFEE] hover:text-[#20b2aa]'
           : 'bg-quranmemo-secondary text-[#20b2aa] hover:bg-[#5EEAD3] hover:text-white',

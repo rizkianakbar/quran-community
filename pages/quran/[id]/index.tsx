@@ -13,6 +13,7 @@ export default function QuranDetail({ surah }: any) {
   const { id } = router.query;
   const data = JSON.parse(surah)[`${id}`];
   const title = `${id}. Surah ${data.name_latin}`;
+
   return (
     <PageSection>
       <PageHeader
@@ -35,6 +36,7 @@ export default function QuranDetail({ surah }: any) {
         <QuranHeader title={title} />
         <QuranForm data={data} />
         <QuranDetails data={data} />
+        <QuranForm data={data} />
       </PageContent>
     </PageSection>
   );

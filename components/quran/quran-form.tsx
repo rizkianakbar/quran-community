@@ -1,55 +1,42 @@
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/solid';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
+import { Button } from '../ui/button/button';
+import { surahList } from '../../lib/surah/surah-list';
+import Link from 'next/link';
 
 export function QuranForm({ data }: any) {
   const { id } = useRouter().query;
   const route = parseInt(id as string);
-  const prev = `/quran/${route - 1}?id=${route - 1}`;
-  const next = `/quran/${route + 1}?id=${route + 1}`;
+  const prev =
+    route !== 1
+      ? `/quran/${route - 1}?id=${route - 1}`
+      : `/quran/${114}?id=${114}`;
+  const next =
+    route !== 114
+      ? `/quran/${route + 1}?id=${route + 1}`
+      : `/quran/${1}?id=${1}`;
 
-  const btnData = [
-    {
-      id: 1,
-      name: 'prev',
-      icon: ArrowLeftIcon,
-    },
-    {
-      id: 2,
-      name: `${data.name_latin}`,
-      icon: null,
-    },
-    {
-      id: 3,
-      name: 'next',
-      icon: ArrowRightIcon,
-    },
-  ];
-  const dataRendered = btnData.map((item) => {
-    return (
-      <Link
-        key={item.id}
-        href={
-          item.name !== 'next' && item.name !== 'prev'
-            ? `/quran/${id}?id=${id}`
-            : (item.name = 'next' ? next : prev)
-        }
-      >
-        <a
-          key={item.id}
-          className="border py-1 px-2 border-gray-200 hover:bg-[#5EEAD3] hover:text-white hover:border-[#5EEAD3]"
-        >
-          {/* if icon exist then render icon else render text */}
-          {item.icon
-            ? React.createElement(item.icon, {
-                className: 'h-4 inline-block',
-              })
-            : item.name}
-        </a>
+  return (
+    <div className="text-center py-4 text-gray-400 flex justify-between">
+      <Link href={prev} as={prev} passHref prefetch={false} replace>
+        <Button className="w-full rounded-none rounded-l-lg">
+          {React.createElement(ArrowLeftIcon, {
+            className: 'h-5 mr-1',
+          })}
+          {route !== 1 ? surahList[route - 2].name : surahList[113].name}
+        </Button>
       </Link>
-    );
-  });
+      <Button className="w-full rounded-none">{data.name_latin}</Button>
 
-  return <div className="text-center p-2 text-gray-400">{dataRendered}</div>;
+      <Link href={next} as={next} passHref prefetch={false} replace>
+        <Button className="w-full rounded-none rounded-r-lg">
+          {route !== 114 ? surahList[route].name : surahList[0].name}
+          {React.createElement(ArrowRightIcon, {
+            className: 'h-5 ml-1',
+          })}
+        </Button>
+      </Link>
+    </div>
+  );
 }

@@ -126,7 +126,7 @@ export default function Tabs() {
                                   {post.ayat}
                                 </div>
                                 <Button
-                                  className="text-xs"
+                                  className="text-xs px-4"
                                   onClick={() => console.log('clicked')}
                                   primary
                                 >
