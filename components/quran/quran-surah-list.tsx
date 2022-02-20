@@ -5,10 +5,29 @@ export function SurahList({ dataFiltered }: any) {
   const data = () => {
     if (dataFiltered) {
       return surahList.filter((item: any) => {
-        return Object.values(item)
-          .join('')
-          .toLowerCase()
-          .includes(dataFiltered.toLowerCase());
+        // replace - with space or remove it
+        console.log(item.name.replace(/-/g, ''));
+        return (
+          Object.values(item)
+            .join('')
+            .toLowerCase()
+            .includes(dataFiltered.toLowerCase()) ||
+          Object.values(item)
+            .join('')
+            .toLowerCase()
+            .replace(/-/g, '')
+            .includes(dataFiltered.toLowerCase()) ||
+          Object.values(item)
+            .join('')
+            .toLowerCase()
+            .replace(/-/g, ' ')
+            .includes(dataFiltered.toLowerCase()) ||
+          Object.values(item)
+            .join('')
+            .toLowerCase()
+            .replace(/'/g, '')
+            .includes(dataFiltered.toLowerCase())
+        );
       });
     } else {
       return surahList;
