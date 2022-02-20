@@ -139,10 +139,10 @@ export function HomeMenu() {
                 {item.name}
               </button>
             ) : (
-              <Link href={item.href}>
-                <a className="text-gray-900 font-semibold text-xs mt-3 helper-link-cover">
+              <Link href={item.href} passHref>
+                <button className="text-gray-900 font-semibold text-xs mt-3 helper-link-cover">
                   {item.name}
-                </a>
+                </button>
               </Link>
             )}
           </li>

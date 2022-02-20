@@ -26,18 +26,10 @@ a {
 * {
   box-sizing: border-box;
 }
-input,
-textarea,
-button,
-select,
-a {
-  -webkit-tap-highlight-color: #5eead4;
-}
 
 input:focus,
 textarea:focus,
-select:focus,
-a:focus {
+select:focus {
   outline: none !important;
   border: 1px solid #5eead4;
 }
