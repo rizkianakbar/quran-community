@@ -74,6 +74,7 @@ export function QuranDetails({ data }: any) {
     {
       text: 'Memorize',
       icon: PlusIcon,
+      onclick: 'memorize',
     },
     {
       text: 'Tafsir',
@@ -110,6 +111,18 @@ export function QuranDetails({ data }: any) {
                     ? {
                         onClick: () => {
                           onClickTafsir(i + 1);
+                        },
+                      }
+                    : item.onclick === 'memorize'
+                    ? {
+                        onClick: () => {
+                          console.log('memorize', i);
+                          // redirect to memorize page
+                          (
+                            window as any
+                          ).location.href = `/ziyadah/${id}?id=${id}&firstAyat=${
+                            i + 1
+                          }&secondAyat=${i + 1}`;
                         },
                       }
                     : {})}
