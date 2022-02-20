@@ -1,11 +1,28 @@
 ## Quranmemo Clone
 
-First, run the development server:
+I made this project just for my learning tool or my way to implement what I've learned or explored, for the original app you can check and download it [here!](https://play.google.com/store/apps/details?id=com.ndeztea.quranmemocommunity&hl=en)
 
-```bash
-npm run dev
-# or
-yarn dev
+## Live Demo
+
+Please click this link [Live Demo!](https://quranmemo.vercel.app/) (better open it on your phone browser then install the app)
+
+## How to run this project
+
+### 1. Install All Setup Requirement
+
+- NodeJs
+- NPM
+
+### 2. Run This Command on Project Folder
+
+```
+# Development
+npm i
+npm start
+
+# Production
+npm i
+npm build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The local server will live at port 3000 by default
