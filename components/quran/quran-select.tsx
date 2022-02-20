@@ -36,7 +36,7 @@ export function QuranSelect({ surahList }: any) {
       <select
         name="id"
         id="id"
-        className="w-full h-10 px-4 py-2 bg-white border border-gray-300 rounded-lg border-quranmemo-primary text-gray-400"
+        className="w-full h-10 px-4 py-2 bg-white border border-quranmemo-primary rounded-lg border-quranmemo-primary text-gray-400"
         onChange={onChangeSurah}
       >
         {option}
