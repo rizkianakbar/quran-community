@@ -4,7 +4,7 @@ I made this project just for my learning tool or my way to implement what I've l
 
 ## Live Demo
 
-Please click this link [Live Demo!](https://quranmemo.vercel.app/) (better open it on your phone browser then install the app)
+Click this link to see the [Demo!](https://quranmemo.vercel.app/) (better open it on your phone browser then install the app)
 
 ## How to run this project
 
