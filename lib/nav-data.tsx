@@ -37,7 +37,7 @@ export const bottomNavigation: NavigationItem[] = [
   {
     name: 'Account',
     icon: UserCircleIcon,
-    href: '/notifications',
+    href: '/account',
   },
 ];
 
