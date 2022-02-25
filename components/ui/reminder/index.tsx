@@ -1,4 +1,5 @@
 import { BackspaceIcon } from '@heroicons/react/solid';
+import Link from 'next/link';
 import React from 'react';
 import { Button } from '../button/button';
 
@@ -15,12 +16,46 @@ export function Reminder() {
     <>
       <div>
         <p className="mb-2">{firstText}</p>
-        <Button className="w-full">Baca Al-Kahfi Sekarang</Button>
+        <Link
+          href={{
+            pathname: '/quran/18',
+            query: {
+              id: 18,
+            },
+          }}
+          passHref
+        >
+          <Button className="w-full">Baca Al-Kahfi Sekarang</Button>
+        </Link>
       </div>
       <div>
         <p className="mt-6 mb-2">{secondText}</p>
-        <Button className="w-full">Hafalkan 10 Ayat awal</Button>
-        <Button className="w-full mt-2 mb-6">Hafalkan 10 Ayat akhir</Button>
+        <Link
+          href={{
+            pathname: '/ziyadah/18',
+            query: {
+              id: 18,
+              firstAyat: 1,
+              secondAyat: 10,
+            },
+          }}
+          passHref
+        >
+          <Button className="w-full">Hafalkan 10 Ayat awal</Button>
+        </Link>
+        <Link
+          href={{
+            pathname: '/ziyadah/18',
+            query: {
+              id: 18,
+              firstAyat: '100',
+              secondAyat: '110',
+            },
+          }}
+          passHref
+        >
+          <Button className="w-full mt-2 mb-6">Hafalkan 10 Ayat akhir</Button>
+        </Link>
       </div>
     </>
   );

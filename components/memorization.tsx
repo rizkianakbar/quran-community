@@ -278,7 +278,7 @@ export default function Memorization({ ayat, data }: any) {
           )}
           {isSelectedChild === '#1' || isSelectedChild === '#3' ? (
             <p className="text-gray-500 text-sm ml-2 my-2">
-              <span>( {index + 1} ) </span>
+              <span>( {Number(firstAyat) + index} ) </span>
               {data.translations.id.text[index + 1]}
             </p>
           ) : (
