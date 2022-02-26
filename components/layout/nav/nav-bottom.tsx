@@ -8,7 +8,7 @@ import { bottomNavigation, NavigationItem } from '@/lib/nav-data';
 const navigationClasses = (isActive?: boolean) => {
   return [
     'inline-flex flex-col items-center justify-center text-center h-12 px-2 rounded-md',
-    isActive ? 'text-quranmemo-primary font-semibold' : 'text-gray-600',
+    isActive ? 'text-quranmemo-primary font-semibold' : 'text-gray-500',
     'hover:text-quranmemo-primary',
   ];
 };
@@ -20,7 +20,7 @@ export function Navigation() {
     return (
       <>
         {createElement(item.icon, {
-          className: 'w-8 h-8',
+          className: 'w-7 h-7',
           'aria-hidden': true,
         })}
         <span className="text-xs truncate">{item.name}</span>
