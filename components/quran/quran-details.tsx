@@ -6,6 +6,8 @@ import {
 } from '@heroicons/react/solid';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import { Option, OptionSwitch } from '..';
+import { Tafsir } from '../tafsir';
 import Modal from '../ui/modal/modal';
 
 const calc = (input: any) => {
@@ -20,6 +22,12 @@ const calc = (input: any) => {
 
 export function QuranDetails({ data }: any) {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const [bottomSheetTitle, setBottomSheetTitle] = React.useState('');
+  const [bottomSheetContent, setBottomSheetContent] = React.useState('') as any;
+  const [open, setOpen] = React.useState(false);
+  const [option, setOption] = React.useState<Option>(
+    Option.ReactSpringBottomSheet
+  );
   const [isOpen, setIsOpen] = useState(false);
   const [indexAyah, setIndexAyah] = useState(0);
   const router = useRouter();
@@ -56,9 +64,17 @@ export function QuranDetails({ data }: any) {
     }
   };
 
+  const onReady = () => setOpen(true);
+
+  const onDismiss = () => setOpen(false);
+
   const onClickTafsir = (index: any) => {
-    setIsOpen(true);
     setIndexAyah(index);
+    setBottomSheetTitle(`Tafsir ${data.name_latin} : ${indexAyah}`);
+    setBottomSheetContent(
+      <Tafsir data={data.tafsir.id.kemenag.text[indexAyah]} />
+    );
+    onReady();
   };
 
   const buttonData = [
@@ -116,7 +132,6 @@ export function QuranDetails({ data }: any) {
                     : item.onclick === 'memorize'
                     ? {
                         onClick: () => {
-                          console.log('memorize', i);
                           // redirect to memorize page
                           (
                             window as any
@@ -148,6 +163,14 @@ export function QuranDetails({ data }: any) {
         title={`Tafsir ${data.name_latin} : ${indexAyah}`}
         content={data.tafsir.id.kemenag.text[indexAyah]}
         button="Close"
+      />
+      <OptionSwitch
+        option={option}
+        open={open}
+        onReady={onReady}
+        onDismiss={onDismiss}
+        title={bottomSheetTitle}
+        content={bottomSheetContent}
       />
     </div>
   );
