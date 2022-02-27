@@ -4,6 +4,7 @@ import {
   PlusIcon,
   ShareIcon,
 } from '@heroicons/react/solid';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { Option, OptionSwitch } from '..';
@@ -115,38 +116,43 @@ export function QuranDetails({ data }: any) {
           {buttonData.map((item, index) => {
             return (
               <span key={item.text}>
-                <button
-                  className="px-2 hover:bg-[#5EEAD3] hover:text-white"
-                  {...(item.onclick === 'play'
-                    ? {
-                        onClick: () => {
-                          onClickPlay(i + 1);
-                        },
-                      }
-                    : item.onclick === 'tafsir'
-                    ? {
-                        onClick: () => {
-                          onClickTafsir(i + 1);
-                        },
-                      }
-                    : item.onclick === 'memorize'
-                    ? {
-                        onClick: () => {
-                          // redirect to memorize page
-                          (
-                            window as any
-                          ).location.href = `/ziyadah/${id}?id=${id}&firstAyat=${
-                            i + 1
-                          }&secondAyat=${i + 1}`;
-                        },
-                      }
-                    : {})}
-                >
-                  {React.createElement(item.icon, {
-                    className: 'h-5 inline-block mr-1',
-                  })}
-                  {item.text}
-                </button>
+                {item.onclick !== 'memorize' ? (
+                  <button
+                    className="px-2 hover:bg-[#5EEAD3] hover:text-white"
+                    {...(item.onclick === 'play'
+                      ? {
+                          onClick: () => {
+                            onClickPlay(i + 1);
+                          },
+                        }
+                      : item.onclick === 'tafsir'
+                      ? {
+                          onClick: () => {
+                            onClickTafsir(i + 1);
+                          },
+                        }
+                      : {})}
+                  >
+                    {React.createElement(item.icon, {
+                      className: 'h-5 inline-block mr-1',
+                    })}
+                    {item.text}
+                  </button>
+                ) : (
+                  <Link
+                    href={`/ziyadah/${id}?id=${id}&firstAyat=${
+                      i + 1
+                    }&secondAyat=${i + 1}`}
+                    passHref
+                  >
+                    <button className="px-2 hover:bg-[#5EEAD3] hover:text-white">
+                      {React.createElement(item.icon, {
+                        className: 'h-5 inline-block mr-1',
+                      })}
+                      {item.text}
+                    </button>
+                  </Link>
+                )}
               </span>
             );
           })}
