@@ -32,7 +32,7 @@ export const ReactSpringBottomSheetUsage = React.forwardRef(
         style={{
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          '--rsbs-bg': '#fafafa',
+          '--rsbs-bg': '#fff',
           '--rsbs-max-w': '500px',
         }}
       >
