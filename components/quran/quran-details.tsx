@@ -9,7 +9,6 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { Option, OptionSwitch } from '..';
 import { Tafsir } from '../tafsir';
-import Modal from '../ui/modal/modal';
 
 const calc = (input: any) => {
   let result = '';
@@ -26,18 +25,10 @@ export function QuranDetails({ data }: any) {
   const [bottomSheetTitle, setBottomSheetTitle] = React.useState('');
   const [bottomSheetContent, setBottomSheetContent] = React.useState('') as any;
   const [open, setOpen] = React.useState(false);
-  const [option, setOption] = React.useState<Option>(
-    Option.ReactSpringBottomSheet
-  );
-  const [isOpen, setIsOpen] = useState(false);
-  const [indexAyah, setIndexAyah] = useState(0);
+  const [option] = React.useState<Option>(Option.ReactSpringBottomSheet);
   const router = useRouter();
   const { text, translations } = data;
   const { id } = router.query;
-
-  const handleToogle = () => {
-    setIsOpen(!isOpen);
-  };
 
   const onClickPlay = (index: any) => {
     if (isAudioPlaying) {
@@ -70,11 +61,8 @@ export function QuranDetails({ data }: any) {
   const onDismiss = () => setOpen(false);
 
   const onClickTafsir = (index: any) => {
-    setIndexAyah(index);
-    setBottomSheetTitle(`Tafsir ${data.name_latin} : ${indexAyah}`);
-    setBottomSheetContent(
-      <Tafsir data={data.tafsir.id.kemenag.text[indexAyah]} />
-    );
+    setBottomSheetTitle(`Tafsir ${data.name_latin} : ${index}`);
+    setBottomSheetContent(<Tafsir data={data.tafsir.id.kemenag.text[index]} />);
     onReady();
   };
 
@@ -163,13 +151,6 @@ export function QuranDetails({ data }: any) {
   return (
     <div className="bg-white shadow overflow-hidden rounded-md">
       <div className="divide-y divide-dashed divide-gray-300">{surahList}</div>
-      <Modal
-        isOpen={isOpen}
-        onToggle={handleToogle}
-        title={`Tafsir ${data.name_latin} : ${indexAyah}`}
-        content={data.tafsir.id.kemenag.text[indexAyah]}
-        button="Close"
-      />
       <OptionSwitch
         option={option}
         open={open}
