@@ -10,7 +10,6 @@ export const ReactSpringBottomSheetUsage = React.forwardRef(
     ref: RSBS.ForwardedRef
   ) => {
     // animate out on unmount
-    console.log(props);
 
     useEffect(() => onDismiss, []);
 

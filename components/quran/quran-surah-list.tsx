@@ -6,7 +6,6 @@ export function SurahList({ dataFiltered }: any) {
     if (dataFiltered) {
       return surahList.filter((item: any) => {
         // replace - with space or remove it
-        console.log(item.name.replace(/-/g, ''));
         return (
           Object.values(item)
             .join('')

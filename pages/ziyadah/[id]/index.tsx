@@ -13,7 +13,6 @@ export default function ZiyadahDetail({ surah }: any) {
   if (data && firstAyat && secondAyat) {
     const first: number = +firstAyat;
     const second: number = +secondAyat;
-    console.log(first, second);
 
     const ayatt = Object.entries(data.text)
       .slice(first - 1, second)

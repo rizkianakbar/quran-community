@@ -351,10 +351,6 @@ export default function Memorization({ ayat, data }: any) {
                   className="px-2 mx-2 my-2 text-lg border-dashed border-quranmemo-primary border"
                   id={`choice-${indexParent.toString()}-${index.toString()}`}
                   onClick={() => {
-                    console.log('length', lengthAyat);
-                    console.log('indexWhatever', indexWhatever);
-                    console.log(index + 1);
-
                     if (indexWhatever === index + 1) {
                       setIndexWhatever(indexWhatever + 1);
                       const classAyatHidden = document.getElementById(
@@ -373,7 +369,6 @@ export default function Memorization({ ayat, data }: any) {
                     }
 
                     if (indexWhatever === lengthAyat) {
-                      console.log('done');
                       setIndexWhatever(1);
                       const classChoiceSection = document.getElementById(
                         `${indexParent?.toString()}`
