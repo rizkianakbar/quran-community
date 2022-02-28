@@ -1,8 +1,11 @@
 import { Option, OptionSwitch } from '@/components';
+import { Contact } from '@/components/contact';
 import { FAQ } from '@/components/faq';
 import { Container } from '@/components/layout/container';
 import { PageSection } from '@/components/layout/pages';
 import { Subscription } from '@/components/subscription';
+import Modal from '@/components/ui/modal/modal';
+import { Reminder } from '@/components/ui/reminder';
 import {
   AcademicCapIcon,
   BookOpenIcon,
@@ -19,7 +22,11 @@ import Link from 'next/link';
 import React, { createElement } from 'react';
 import profile from '../public/kian.jpeg';
 import Ziyadah from './ziyadah';
-
+interface IModal {
+  title: string;
+  content: JSX.Element | string;
+  button: string;
+}
 const Account = () => {
   const [bottomSheetTitle, setBottomSheetTitle] = React.useState('');
   const [bottomSheetContent, setBottomSheetContent] = React.useState('') as any;
@@ -30,7 +37,15 @@ const Account = () => {
   );
 
   const onReady = () => setOpen(true);
-
+  const [isOpen, setIsOpen] = React.useState(false);
+  const handleToogle = () => {
+    setIsOpen(!isOpen);
+  };
+  const [dataModal, setDataModal] = React.useState<IModal>({
+    title: '',
+    content: '',
+    button: '',
+  });
   const onDismiss = () => setOpen(false);
   const menuData = [
     {
@@ -75,6 +90,14 @@ const Account = () => {
       name: 'Kontak',
       icon: PhoneIcon,
       href: '#',
+      onclick: () => {
+        setIsOpen(true);
+        setDataModal({
+          title: 'Baca Al-Kahfi',
+          content: <Contact />,
+          button: 'Got it, thanks!',
+        });
+      },
     },
     {
       name: 'Partner',
@@ -144,7 +167,7 @@ const Account = () => {
   const renderSupport = supportData.map((support, index) => {
     return (
       <>
-        {support.name !== 'FAQ' ? (
+        {support.name !== 'FAQ' && support.name != 'Kontak' ? (
           <Link
             href={support.href}
             key={index}
@@ -173,6 +196,26 @@ const Account = () => {
               </div>
             </a>
           </Link>
+        ) : support.name === 'Kontak' ? (
+          <a onClick={support.onclick} key={index} className="cursor-pointer">
+            <div
+              className={`{border-t first:border-t-0 first py-3 ${
+                index === supportData.length - 1 ? '' : 'border-b'
+              }`}
+            >
+              {createElement(support.icon, {
+                className:
+                  'ml-2 h-6 w-6 text-gray-400 inline-block align-middle',
+              })}
+              <span className="text-sm ml-4 text-gray-700 inline-block align-middle">
+                {support.name}
+              </span>
+              {createElement(ChevronRightIcon, {
+                className:
+                  'h-5 w-5 text-gray-400 inline-block align-middle float-right mt-1',
+              })}
+            </div>
+          </a>
         ) : (
           <a onClick={support.onclick} key={index} className="cursor-pointer">
             <div
@@ -258,6 +301,13 @@ const Account = () => {
         title={bottomSheetTitle}
         content={bottomSheetContent}
         fullScreen={fullScreen}
+      />
+      <Modal
+        isOpen={isOpen}
+        onToggle={handleToogle}
+        title={dataModal.title}
+        content={dataModal.content}
+        button={dataModal.button}
       />
     </>
   );
