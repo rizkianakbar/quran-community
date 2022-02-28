@@ -1,4 +1,5 @@
 import { Option, OptionSwitch } from '@/components';
+import { FAQ } from '@/components/faq';
 import { Container } from '@/components/layout/container';
 import { PageSection } from '@/components/layout/pages';
 import { Subscription } from '@/components/subscription';
@@ -23,6 +24,7 @@ const Account = () => {
   const [bottomSheetTitle, setBottomSheetTitle] = React.useState('');
   const [bottomSheetContent, setBottomSheetContent] = React.useState('') as any;
   const [open, setOpen] = React.useState(false);
+  const [fullScreen, setFullScreen] = React.useState(false);
   const [option, setOption] = React.useState<Option>(
     Option.ReactSpringBottomSheet
   );
@@ -37,6 +39,7 @@ const Account = () => {
       onclick: () => {
         setBottomSheetTitle('Ziyadah');
         setBottomSheetContent(<Ziyadah />);
+        setFullScreen(false);
         onReady();
       },
     },
@@ -52,6 +55,7 @@ const Account = () => {
         setBottomSheetTitle('Subscription');
         setBottomSheetContent(<Subscription />);
         onReady();
+        setFullScreen(true);
       },
     },
   ];
@@ -60,6 +64,12 @@ const Account = () => {
       name: 'FAQ',
       icon: InformationCircleIcon,
       href: '#',
+      onclick: () => {
+        setBottomSheetTitle('FAQ');
+        setBottomSheetContent(<FAQ />);
+        onReady();
+        setFullScreen(true);
+      },
     },
     {
       name: 'Kontak',
@@ -133,27 +143,58 @@ const Account = () => {
 
   const renderSupport = supportData.map((support, index) => {
     return (
-      <Link href={support.href} key={index} passHref prefetch as={support.href}>
-        <a>
-          <div
-            className={`{border-t first:border-t-0 first py-3 ${
-              index === supportData.length - 1 ? '' : 'border-b'
-            }`}
+      <>
+        {support.name !== 'FAQ' ? (
+          <Link
+            href={support.href}
             key={index}
+            passHref
+            prefetch
+            as={support.href}
           >
-            {createElement(support.icon, {
-              className: 'ml-2 h-6 w-6 text-gray-400 inline-block align-middle',
-            })}
-            <span className="text-sm ml-4 text-gray-700 inline-block align-middle">
-              {support.name}
-            </span>
-            {createElement(ChevronRightIcon, {
-              className:
-                'h-5 w-5 text-gray-400 inline-block align-middle float-right mt-1',
-            })}
-          </div>
-        </a>
-      </Link>
+            <a>
+              <div
+                className={`{border-t first:border-t-0 first py-3 ${
+                  index === supportData.length - 1 ? '' : 'border-b'
+                }`}
+                key={index}
+              >
+                {createElement(support.icon, {
+                  className:
+                    'ml-2 h-6 w-6 text-gray-400 inline-block align-middle',
+                })}
+                <span className="text-sm ml-4 text-gray-700 inline-block align-middle">
+                  {support.name}
+                </span>
+                {createElement(ChevronRightIcon, {
+                  className:
+                    'h-5 w-5 text-gray-400 inline-block align-middle float-right mt-1',
+                })}
+              </div>
+            </a>
+          </Link>
+        ) : (
+          <a onClick={support.onclick} key={index} className="cursor-pointer">
+            <div
+              className={`{border-t first:border-t-0 first py-3 ${
+                index === supportData.length - 1 ? '' : 'border-b'
+              }`}
+            >
+              {createElement(support.icon, {
+                className:
+                  'ml-2 h-6 w-6 text-gray-400 inline-block align-middle',
+              })}
+              <span className="text-sm ml-4 text-gray-700 inline-block align-middle">
+                {support.name}
+              </span>
+              {createElement(ChevronRightIcon, {
+                className:
+                  'h-5 w-5 text-gray-400 inline-block align-middle float-right mt-1',
+              })}
+            </div>
+          </a>
+        )}
+      </>
     );
   });
 
@@ -216,6 +257,7 @@ const Account = () => {
         onDismiss={onDismiss}
         title={bottomSheetTitle}
         content={bottomSheetContent}
+        fullScreen={fullScreen}
       />
     </>
   );
