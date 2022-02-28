@@ -7,4 +7,5 @@ export type BottomSheetProps = {
   title: string;
   content: ReactElement | null;
   footer?: string;
+  fullScreen?: boolean;
 };

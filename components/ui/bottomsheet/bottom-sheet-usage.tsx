@@ -10,7 +10,6 @@ export const ReactSpringBottomSheetUsage = React.forwardRef(
     ref: RSBS.ForwardedRef
   ) => {
     // animate out on unmount
-
     useEffect(() => onDismiss, []);
 
     return (
@@ -19,7 +18,9 @@ export const ReactSpringBottomSheetUsage = React.forwardRef(
         ref={ref}
         open={open}
         onDismiss={onDismiss}
-        defaultSnap={({ maxHeight }) => maxHeight / 2}
+        defaultSnap={({ maxHeight }) =>
+          props.fullScreen ? maxHeight : maxHeight / 2
+        }
         snapPoints={({ maxHeight }) => [
           maxHeight - maxHeight / 10,
           maxHeight / 4,
