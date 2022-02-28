@@ -93,7 +93,7 @@ const Account = () => {
       onclick: () => {
         setIsOpen(true);
         setDataModal({
-          title: 'Baca Al-Kahfi',
+          title: 'Hubungi Kami',
           content: <Contact />,
           button: 'Got it, thanks!',
         });
