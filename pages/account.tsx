@@ -254,7 +254,7 @@ const Account = () => {
               height={60}
             />
             <p className="text-sm text-gray-700">Welcome!</p>
-            <Link href="#" passHref>
+            <Link href="/auth" passHref>
               <a>
                 <div>
                   <span className="text-xs text-gray-400 align-middle cursor-pointer">
