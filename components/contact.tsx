@@ -17,11 +17,11 @@ export function Contact() {
     <>
       <div>
         <p className="mb-2">{firstText}</p>
-        <Button className="w-full mb-3" icon={MailIcon}>
+        <Button secondary className="w-full mb-3" icon={MailIcon}>
           <a href="mailto:quranmemo.id@gmail.com">quranmemo.id@gmail.com</a>
         </Button>
 
-        <Button className="w-full" icon={WhatsAppIcon}>
+        <Button secondary className="w-full" icon={WhatsAppIcon}>
           <a href="https://api.whatsapp.com/send?phone=6285956331813">
             085956331813
           </a>

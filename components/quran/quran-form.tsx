@@ -20,19 +20,25 @@ export function QuranForm({ data }: any) {
   return (
     <div className="text-center py-4 text-gray-400 flex justify-between">
       <Link href={prev} as={prev} passHref prefetch={false} replace>
-        <Button className="w-full rounded-none rounded-l-lg text-xs h-8">
+        <Button
+          secondary
+          className="w-full rounded-none rounded-l-lg text-xs h-8"
+        >
           {React.createElement(ArrowLeftIcon, {
             className: 'h-4 mr-1',
           })}
           {route !== 1 ? surahList[route - 2].name : surahList[113].name}
         </Button>
       </Link>
-      <Button className="w-full rounded-none text-xs h-8">
+      <Button secondary className="w-full rounded-none text-xs h-8">
         {data.name_latin}
       </Button>
 
       <Link href={next} as={next} passHref prefetch={false} replace>
-        <Button className="w-full rounded-none rounded-r-lg text-xs h-8">
+        <Button
+          secondary
+          className="w-full rounded-none rounded-r-lg text-xs h-8"
+        >
           {route !== 114 ? surahList[route].name : surahList[0].name}
           {React.createElement(ArrowRightIcon, {
             className: 'h-4 ml-1',

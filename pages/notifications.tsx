@@ -58,6 +58,7 @@ function Notifications({ callback }: { callback: any }) {
               {/* make a button in the right position */}
               <div className="flex justify-center">
                 <Button
+                  secondary
                   className="px-4"
                   onClick={() => {
                     callback();

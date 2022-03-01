@@ -31,6 +31,7 @@ interface ButtonBaseProps {
   /** If the button has an icon, change where the icon is placed. Defaults to `"left"`. */
   iconPosition?: ButtonIconPositions;
   primary?: boolean;
+  secondary?: boolean;
 }
 
 export type ButtonProps = ButtonBaseProps &

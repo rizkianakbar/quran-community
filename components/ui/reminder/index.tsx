@@ -25,7 +25,9 @@ export function Reminder() {
           }}
           passHref
         >
-          <Button className="w-full">Baca Al-Kahfi Sekarang</Button>
+          <Button secondary className="w-full">
+            Baca Al-Kahfi Sekarang
+          </Button>
         </Link>
       </div>
       <div>
@@ -41,7 +43,9 @@ export function Reminder() {
           }}
           passHref
         >
-          <Button className="w-full">Hafalkan 10 Ayat awal</Button>
+          <Button secondary className="w-full">
+            Hafalkan 10 Ayat awal
+          </Button>
         </Link>
         <Link
           href={{
