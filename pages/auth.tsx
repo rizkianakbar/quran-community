@@ -1,9 +1,9 @@
 import { PageContent, PageSection } from '@/components/layout/pages';
 import { Button } from '@/components/ui/button/button';
-import { getProviders, signIn, useSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import React from 'react';
 
-const Auth = ({ providers }: any) => {
+const Auth = () => {
   const { status } = useSession();
   return (
     <PageSection>
@@ -57,10 +57,5 @@ const Auth = ({ providers }: any) => {
     </PageSection>
   );
 };
-export async function getServerSideProps(context: any) {
-  const providers = await getProviders();
-  return {
-    props: { providers },
-  };
-}
+
 export default Auth;
