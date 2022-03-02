@@ -8,7 +8,10 @@ export default function Modal({
   title,
   content,
   button,
+  wfull,
 }: any) {
+  console.log(wfull);
+
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -62,7 +65,11 @@ export default function Modal({
                     {button}
                   </button> */}
 
-                  <Button onClick={onToggle} primary className="px-4">
+                  <Button
+                    onClick={onToggle}
+                    primary
+                    className={`${wfull ? 'w-full' : ''} px-4`}
+                  >
                     {button}
                   </Button>
                 </div>

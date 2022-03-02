@@ -4,6 +4,7 @@ import { FAQ } from '@/components/faq';
 import { Container } from '@/components/layout/container';
 import { PageSection } from '@/components/layout/pages';
 import { Subscription } from '@/components/subscription';
+import { Button } from '@/components/ui/button/button';
 import Modal from '@/components/ui/modal/modal';
 import {
   AcademicCapIcon,
@@ -26,6 +27,7 @@ interface IModal {
   title: string;
   content: JSX.Element | string;
   button: string;
+  wfull?: boolean;
 }
 const Account = () => {
   const [bottomSheetTitle, setBottomSheetTitle] = React.useState('');
@@ -46,6 +48,7 @@ const Account = () => {
     title: '',
     content: '',
     button: '',
+    wfull: false,
   });
 
   const onDismiss = () => setOpen(false);
@@ -289,7 +292,30 @@ const Account = () => {
               </Link>
             )}
             {session && (
-              <a onClick={() => signOut()} className="cursor-pointer">
+              <a
+                onClick={() => {
+                  setIsOpen(true);
+                  setDataModal({
+                    title: 'Logout',
+                    content: (
+                      <>
+                        <p>Are you sure you want to logout?</p>
+                        <Button
+                          onClick={() => signOut()}
+                          className="w-full mt-4"
+                          primary
+                        >
+                          <span className="text-sm">Ok</span>
+                        </Button>
+                      </>
+                    ),
+                    button: 'Cancel',
+                    wfull: true,
+                  });
+                  // signOut();
+                }}
+                className="cursor-pointer"
+              >
                 <div>
                   <span className="text-xs text-gray-400 align-middle cursor-pointer">
                     {session?.user?.email}
@@ -342,6 +368,7 @@ const Account = () => {
         title={dataModal.title}
         content={dataModal.content}
         button={dataModal.button}
+        wfull={dataModal.wfull}
       />
     </>
   );
