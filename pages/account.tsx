@@ -5,7 +5,6 @@ import { Container } from '@/components/layout/container';
 import { PageSection } from '@/components/layout/pages';
 import { Subscription } from '@/components/subscription';
 import Modal from '@/components/ui/modal/modal';
-import { Reminder } from '@/components/ui/reminder';
 import {
   AcademicCapIcon,
   BookOpenIcon,
@@ -17,10 +16,11 @@ import {
   PhoneIcon,
   UserGroupIcon,
 } from '@heroicons/react/solid';
+import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { createElement } from 'react';
-import profile from '../public/kian.jpeg';
+import profile from '../public/default.png';
 import Ziyadah from './ziyadah';
 interface IModal {
   title: string;
@@ -35,6 +35,7 @@ const Account = () => {
   const [option, setOption] = React.useState<Option>(
     Option.ReactSpringBottomSheet
   );
+  const { data: session } = useSession();
 
   const onReady = () => setOpen(true);
   const [isOpen, setIsOpen] = React.useState(false);
@@ -46,6 +47,7 @@ const Account = () => {
     content: '',
     button: '',
   });
+
   const onDismiss = () => setOpen(false);
   const menuData = [
     {
@@ -240,25 +242,57 @@ const Account = () => {
       </>
     );
   });
-
   return (
     <>
       <PageSection>
         <Container className="">
           <div className="pt-4 pb-4 bg-white px-4">
-            <Image
-              src={profile}
-              className="rounded-full object-cover object-top"
-              alt="Profile"
-              width={60}
-              height={60}
-            />
-            <p className="text-sm text-gray-700">Welcome!</p>
-            <Link href="/auth" passHref>
-              <a>
+            {!session && (
+              <>
+                <Image
+                  src={profile}
+                  className="rounded-full object-cover object-top"
+                  alt="Profile"
+                  width={60}
+                  height={60}
+                />
+                <p className="text-sm text-gray-700">Welcome!</p>
+              </>
+            )}
+            {session && (
+              <>
+                <Image
+                  loader={() => session?.user?.image as string}
+                  unoptimized={true}
+                  src={session?.user?.image as string}
+                  className="rounded-full object-cover object-top"
+                  alt="Profile"
+                  width={60}
+                  height={60}
+                />
+                <p className="text-sm text-gray-700">{session?.user?.name}</p>
+              </>
+            )}
+            {!session && (
+              <Link href="/auth" passHref>
+                <a>
+                  <div>
+                    <span className="text-xs text-gray-400 align-middle cursor-pointer">
+                      Create your account or log in here
+                    </span>
+                    {createElement(ChevronRightIcon, {
+                      className:
+                        'h-5 w-5 text-gray-400 inline-block align-middle float-right mt-1',
+                    })}
+                  </div>
+                </a>
+              </Link>
+            )}
+            {session && (
+              <a onClick={() => signOut()} className="cursor-pointer">
                 <div>
                   <span className="text-xs text-gray-400 align-middle cursor-pointer">
-                    Create your account or log in here
+                    {session?.user?.email}
                   </span>
                   {createElement(ChevronRightIcon, {
                     className:
@@ -266,7 +300,7 @@ const Account = () => {
                   })}
                 </div>
               </a>
-            </Link>
+            )}
           </div>
           <div className="bg-white mt-2 px-4">
             <p className="text-sm text-gray-700 font-bold pt-2">Menu</p>

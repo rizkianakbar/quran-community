@@ -6,6 +6,7 @@ import { Layout } from '../components/layout/layout';
 import Head from 'next/head';
 import nProgress from 'nprogress';
 import { useEffect } from 'react';
+import { SessionProvider } from 'next-auth/react';
 
 export const progress = nProgress.configure({
   showSpinner: true,
@@ -41,7 +42,9 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <meta name="description" content="Menghafal Al-Quran di era digital" />
         <meta content="#5EEAD3" name="theme-color" />
       </Head>
-      <Component {...pageProps} />
+      <SessionProvider session={pageProps.session}>
+        <Component {...pageProps} />
+      </SessionProvider>
     </Layout>
   );
 }
