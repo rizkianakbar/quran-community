@@ -121,7 +121,7 @@ const Account = () => {
       // add border-b except last item
       <>
         {menu.href ? (
-          <Link href={menu.href} key={index} passHref prefetch as={menu.href}>
+          <Link href={menu.href} key={index} passHref as={menu.href}>
             <a>
               <div
                 className={`{border-t first:border-t-0 first py-3 ${
@@ -173,13 +173,7 @@ const Account = () => {
     return (
       <>
         {support.name !== 'FAQ' && support.name != 'Kontak' ? (
-          <Link
-            href={support.href}
-            key={index}
-            passHref
-            prefetch
-            as={support.href}
-          >
+          <Link href={support.href} key={index} passHref as={support.href}>
             <a>
               <div
                 className={`{border-t first:border-t-0 first py-3 ${

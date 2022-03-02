@@ -10,8 +10,6 @@ export default function Modal({
   button,
   wfull,
 }: any) {
-  console.log(wfull);
-
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>

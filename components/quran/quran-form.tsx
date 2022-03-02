@@ -19,7 +19,7 @@ export function QuranForm({ data }: any) {
 
   return (
     <div className="text-center py-4 text-gray-400 flex justify-between">
-      <Link href={prev} as={prev} passHref prefetch={false} replace>
+      <Link href={prev} as={prev} passHref replace>
         <Button
           secondary
           className="w-full rounded-none rounded-l-lg text-xs h-8"
@@ -34,7 +34,7 @@ export function QuranForm({ data }: any) {
         {data.name_latin}
       </Button>
 
-      <Link href={next} as={next} passHref prefetch={false} replace>
+      <Link href={next} as={next} passHref replace>
         <Button
           secondary
           className="w-full rounded-none rounded-r-lg text-xs h-8"
