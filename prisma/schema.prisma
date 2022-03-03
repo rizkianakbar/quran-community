@@ -55,10 +55,10 @@ model VerificationToken {
 }
 
 model Memorization {
-  id         String    @id @default(cuid())
-  userId      String
+  id        Int    @id @default(autoincrement())
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @default(now())
+  email      String
   surahId     Int
   startAyatId Int
   endAyatId   Int

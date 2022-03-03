@@ -46,10 +46,10 @@ CREATE TABLE "VerificationToken" (
 
 -- CreateTable
 CREATE TABLE "Memorization" (
-    "id" TEXT NOT NULL,
-    "userId" TEXT NOT NULL,
+    "id" SERIAL NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "email" TEXT NOT NULL,
     "surahId" INTEGER NOT NULL,
     "startAyatId" INTEGER NOT NULL,
     "endAyatId" INTEGER NOT NULL,
