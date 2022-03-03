@@ -1,11 +1,15 @@
+import { fetcher } from '@/utils/fetcher';
+import { Prisma } from '@prisma/client';
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Button } from '../ui/button/button';
 
 export function QuranSelect({ surahList }: any) {
   const [selectedSurah, setSelectedSurah] = useState(1);
-  const [firstAyat, setFirstAyat] = useState(null);
-  const [secondAyat, setSecondAyat] = useState(null);
+  const [firstAyat, setFirstAyat] = useState(0);
+  const [secondAyat, setSecondAyat] = useState(0);
+  const { data: session } = useSession();
 
   const option = surahList.map((item: any) => {
     return (
@@ -69,12 +73,19 @@ export function QuranSelect({ surahList }: any) {
         }}
         passHref
       >
-        {/* <a>
-          <div className="bg-quranmemo-primary mt-2 rounded-lg py-2 text-center text-white">
-            Hafalkan
-          </div>
-        </a> */}
-        <Button className="w-full mt-2" primary>
+        <Button
+          className="w-full mt-2"
+          primary
+          onClick={async () => {
+            const body: Prisma.MemorizationCreateInput = {
+              email: session?.user?.email as string,
+              surahId: Number(selectedSurah),
+              startAyatId: Number(firstAyat),
+              endAyatId: Number(secondAyat),
+            };
+            await fetcher('/api/create-rote', { user: body });
+          }}
+        >
           Hafalkan
         </Button>
       </Link>
