@@ -58,7 +58,9 @@ export function Reminder() {
           }}
           passHref
         >
-          <Button className="w-full mt-2 mb-6">Hafalkan 10 Ayat akhir</Button>
+          <Button className="w-full mt-2 mb-6" secondary>
+            Hafalkan 10 Ayat akhir
+          </Button>
         </Link>
       </div>
     </>
