@@ -77,7 +77,7 @@ export function QuranSelect({ surahList }: any) {
           className="w-full mt-2"
           primary
           onClick={async () => {
-            const body: Prisma.MemorizationCreateInput = {
+            const body = {
               email: session?.user?.email as string,
               surahId: Number(selectedSurah),
               startAyatId: Number(firstAyat),
