@@ -82,6 +82,7 @@ export function QuranSelect({ surahList }: any) {
               surahId: Number(selectedSurah),
               startAyatId: Number(firstAyat),
               endAyatId: Number(secondAyat),
+              status: Number(0),
             };
             await fetcher('/api/set-hafalan', { user: body });
           }}

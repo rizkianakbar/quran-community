@@ -161,6 +161,7 @@ export function QuranDetails({ data }: any) {
                               surahId: Number(id),
                               startAyatId: Number(i + 1),
                               endAyatId: Number(i + 1),
+                              status: 0,
                             };
                             await fetcher('/api/set-hafalan', { user: body });
                           }}

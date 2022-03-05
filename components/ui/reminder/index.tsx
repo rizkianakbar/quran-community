@@ -50,6 +50,7 @@ export function Reminder() {
                 surahId: 18,
                 startAyatId: 1,
                 endAyatId: 10,
+                status: 0,
               };
               await fetcher('/api/set-hafalan', { user: body });
             }}
@@ -77,6 +78,7 @@ export function Reminder() {
                 surahId: 18,
                 startAyatId: 100,
                 endAyatId: 110,
+                status: 0,
               };
               await fetcher('/api/set-hafalan', { user: body });
             }}
