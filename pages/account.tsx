@@ -6,6 +6,7 @@ import { PageSection } from '@/components/layout/pages';
 import { Subscription } from '@/components/subscription';
 import { Button } from '@/components/ui/button/button';
 import Modal from '@/components/ui/modal/modal';
+import { ModalNotLogin } from '@/components/ui/modal/modal-not-login';
 import {
   AcademicCapIcon,
   BookOpenIcon,
@@ -38,7 +39,7 @@ const Account = () => {
     Option.ReactSpringBottomSheet
   );
   const { data: session } = useSession();
-
+  const isLogin = session ? true : false;
   const onReady = () => setOpen(true);
   const [isOpen, setIsOpen] = React.useState(false);
   const handleToogle = () => {
@@ -57,10 +58,15 @@ const Account = () => {
       name: 'Menghafal',
       icon: AcademicCapIcon,
       onclick: () => {
-        setBottomSheetTitle('Ziyadah');
-        setBottomSheetContent(<Ziyadah />);
-        setFullScreen(false);
-        onReady();
+        if (isLogin) {
+          setBottomSheetTitle('Ziyadah');
+          setBottomSheetContent(<Ziyadah />);
+          setFullScreen(false);
+          onReady();
+        } else {
+          setIsOpen(true);
+          <ModalNotLogin isOpen={isOpen} handleToogle={handleToogle} />;
+        }
       },
     },
     {

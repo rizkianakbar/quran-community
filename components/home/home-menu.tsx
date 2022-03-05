@@ -6,6 +6,8 @@ import { Option, OptionSwitch } from '..';
 import Ziyadah from '@/pages/ziyadah';
 import { Reminder } from '../ui/reminder';
 import { Hafalan } from '../hafalan';
+import { useSession } from 'next-auth/react';
+import { ModalNotLogin } from '../ui/modal/modal-not-login';
 
 interface IModal {
   title: string;
@@ -18,15 +20,16 @@ export function HomeMenu() {
   const [bottomSheetTitle, setBottomSheetTitle] = React.useState('');
   const [bottomSheetContent, setBottomSheetContent] = React.useState('') as any;
   const [open, setOpen] = React.useState(false);
-  const [option, setOption] = React.useState<Option>(
-    Option.ReactSpringBottomSheet
-  );
+  const [option] = React.useState<Option>(Option.ReactSpringBottomSheet);
   const [dataModal, setDataModal] = React.useState<IModal>({
     title: '',
     content: '',
     button: '',
   });
-  const isLogin = false;
+
+  const { data: session } = useSession();
+
+  const isLogin = session ? true : false;
 
   React.useEffect(() => {
     const today = new Date();
@@ -51,23 +54,13 @@ export function HomeMenu() {
       });
     } else {
       setIsOpen(true);
-      setDataModal({
-        title: 'Access to this page is restricted',
-        content: 'You need to login to access this page.',
-        button: 'Got it, thanks!',
-      });
+      <ModalNotLogin isOpen={isOpen} handleToogle={handleToogle} />;
     }
   };
 
   const handleToogle = () => {
     setIsOpen(!isOpen);
   };
-
-  // const dataModal = {
-  //   title: 'Access to this page is restricted',
-  //   content: 'You need to login to access this page.',
-  //   button: 'Got it, thanks!',
-  // };
 
   const onReady = () => setOpen(true);
 

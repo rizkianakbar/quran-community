@@ -20,19 +20,19 @@ export const homepageMenus: HomepageMenuItem[] = [
     name: 'Ziyadah',
     href: '/ziyadah',
     icon: EducationIcon,
-    needLogin: false,
+    needLogin: true,
   },
   {
     name: 'Hafalan',
     href: '/',
     icon: EducationIcon,
-    needLogin: false,
+    needLogin: true,
   },
   {
     name: "Muraja'ah",
     href: '/',
     icon: DonationIcon,
-    needLogin: false,
+    needLogin: true,
   },
   {
     name: 'Quiz',
