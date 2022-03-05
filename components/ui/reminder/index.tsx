@@ -1,11 +1,11 @@
-import { BackspaceIcon } from '@heroicons/react/solid';
+import { fetcher } from '@/utils/fetcher';
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import React from 'react';
 import { Button } from '../button/button';
 
 export function Reminder() {
-  const [isOpen, setIsOpen] = React.useState(false);
-
+  const { data: session } = useSession();
   const firstText =
     'Sudahkan baca Al-Kahfi di hari Jumat ini? jika belum yuk kita baca';
 
@@ -43,7 +43,19 @@ export function Reminder() {
           }}
           passHref
         >
-          <Button secondary className="w-full">
+          <Button
+            onClick={async () => {
+              const body = {
+                email: session?.user?.email as string,
+                surahId: 18,
+                startAyatId: 1,
+                endAyatId: 10,
+              };
+              await fetcher('/api/set-hafalan', { user: body });
+            }}
+            secondary
+            className="w-full"
+          >
             Hafalkan 10 Ayat awal
           </Button>
         </Link>
@@ -58,7 +70,19 @@ export function Reminder() {
           }}
           passHref
         >
-          <Button className="w-full mt-2 mb-6" secondary>
+          <Button
+            onClick={async () => {
+              const body = {
+                email: session?.user?.email as string,
+                surahId: 18,
+                startAyatId: 100,
+                endAyatId: 110,
+              };
+              await fetcher('/api/set-hafalan', { user: body });
+            }}
+            className="w-full mt-2 mb-6"
+            secondary
+          >
             Hafalkan 10 Ayat akhir
           </Button>
         </Link>

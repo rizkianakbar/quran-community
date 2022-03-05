@@ -1,9 +1,11 @@
+import { fetcher } from '@/utils/fetcher';
 import {
   BookmarkIcon,
   PlayIcon,
   PlusIcon,
   ShareIcon,
 } from '@heroicons/react/solid';
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
@@ -29,6 +31,8 @@ export function QuranDetails({ data }: any) {
   const router = useRouter();
   const { text, translations } = data;
   const { id } = router.query;
+
+  const { data: session } = useSession();
 
   const onClickPlay = (index: any) => {
     if (isAudioPlaying) {
@@ -133,7 +137,18 @@ export function QuranDetails({ data }: any) {
                     }&secondAyat=${i + 1}`}
                     passHref
                   >
-                    <button className="px-2 hover:bg-[#5EEAD3] hover:text-white">
+                    <button
+                      onClick={async () => {
+                        const body = {
+                          email: session?.user?.email as string,
+                          surahId: Number(id),
+                          startAyatId: Number(i + 1),
+                          endAyatId: Number(i + 1),
+                        };
+                        await fetcher('/api/set-hafalan', { user: body });
+                      }}
+                      className="px-2 hover:bg-[#5EEAD3] hover:text-white"
+                    >
                       {React.createElement(item.icon, {
                         className: 'h-5 inline-block mr-1',
                       })}

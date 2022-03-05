@@ -83,7 +83,7 @@ export function QuranSelect({ surahList }: any) {
               startAyatId: Number(firstAyat),
               endAyatId: Number(secondAyat),
             };
-            await fetcher('/api/create-rote', { user: body });
+            await fetcher('/api/set-hafalan', { user: body });
           }}
         >
           Hafalkan
