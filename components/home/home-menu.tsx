@@ -7,7 +7,6 @@ import Ziyadah from '@/pages/ziyadah';
 import { Reminder } from '../ui/reminder';
 import { Hafalan } from '../hafalan';
 import { useSession } from 'next-auth/react';
-import { ModalNotLogin } from '../ui/modal/modal-not-login';
 
 interface IModal {
   title: string;
@@ -29,7 +28,7 @@ export function HomeMenu() {
 
   const { data: session } = useSession();
 
-  const isLogin = session ? true : false;
+  const isLogin = session !== null ? true : false;
 
   React.useEffect(() => {
     const today = new Date();
@@ -43,7 +42,9 @@ export function HomeMenu() {
       });
     }
   }, []);
-
+  const handleToogle = () => {
+    setIsOpen(!isOpen);
+  };
   const openModal = (name: string) => {
     if (name === "Muraja'ah") {
       setIsOpen(true);
@@ -54,12 +55,12 @@ export function HomeMenu() {
       });
     } else {
       setIsOpen(true);
-      <ModalNotLogin isOpen={isOpen} handleToogle={handleToogle} />;
+      setDataModal({
+        title: 'Access to this page is restricted',
+        content: 'You need to login to access this page.',
+        button: 'Got it, thanks!',
+      });
     }
-  };
-
-  const handleToogle = () => {
-    setIsOpen(!isOpen);
   };
 
   const onReady = () => setOpen(true);

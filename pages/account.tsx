@@ -6,7 +6,6 @@ import { PageSection } from '@/components/layout/pages';
 import { Subscription } from '@/components/subscription';
 import { Button } from '@/components/ui/button/button';
 import Modal from '@/components/ui/modal/modal';
-import { ModalNotLogin } from '@/components/ui/modal/modal-not-login';
 import {
   AcademicCapIcon,
   BookOpenIcon,
@@ -65,7 +64,11 @@ const Account = () => {
           onReady();
         } else {
           setIsOpen(true);
-          <ModalNotLogin isOpen={isOpen} handleToogle={handleToogle} />;
+          setDataModal({
+            title: 'Access to this page is restricted',
+            content: 'You need to login to access this page.',
+            button: 'Got it, thanks!',
+          });
         }
       },
     },
