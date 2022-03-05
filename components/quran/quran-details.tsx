@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { Option, OptionSwitch } from '..';
 import { Tafsir } from '../tafsir';
+import Modal from '../ui/modal/modal';
 
 const calc = (input: any) => {
   let result = '';
@@ -22,6 +23,11 @@ const calc = (input: any) => {
   return result.split('').reverse().join('');
 };
 
+interface IModal {
+  title: string;
+  content: JSX.Element | string;
+  button: string;
+}
 export function QuranDetails({ data }: any) {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [bottomSheetTitle, setBottomSheetTitle] = React.useState('');
@@ -31,8 +37,17 @@ export function QuranDetails({ data }: any) {
   const router = useRouter();
   const { text, translations } = data;
   const { id } = router.query;
-
+  const [dataModal, setDataModal] = React.useState<IModal>({
+    title: '',
+    content: '',
+    button: '',
+  });
+  const [isOpen, setIsOpen] = React.useState(false);
+  const handleToogle = () => {
+    setIsOpen(!isOpen);
+  };
   const { data: session } = useSession();
+  const isLogin = session !== null ? true : false;
 
   const onClickPlay = (index: any) => {
     if (isAudioPlaying) {
@@ -131,30 +146,51 @@ export function QuranDetails({ data }: any) {
                     {item.text}
                   </button>
                 ) : (
-                  <Link
-                    href={`/ziyadah/${id}?id=${id}&firstAyat=${
-                      i + 1
-                    }&secondAyat=${i + 1}`}
-                    passHref
-                  >
-                    <button
-                      onClick={async () => {
-                        const body = {
-                          email: session?.user?.email as string,
-                          surahId: Number(id),
-                          startAyatId: Number(i + 1),
-                          endAyatId: Number(i + 1),
-                        };
-                        await fetcher('/api/set-hafalan', { user: body });
-                      }}
-                      className="px-2 hover:bg-[#5EEAD3] hover:text-white"
-                    >
-                      {React.createElement(item.icon, {
-                        className: 'h-5 inline-block mr-1',
-                      })}
-                      {item.text}
-                    </button>
-                  </Link>
+                  <>
+                    {isLogin ? (
+                      <Link
+                        href={`/ziyadah/${id}?id=${id}&firstAyat=${
+                          i + 1
+                        }&secondAyat=${i + 1}`}
+                        passHref
+                      >
+                        <button
+                          onClick={async () => {
+                            const body = {
+                              email: session?.user?.email as string,
+                              surahId: Number(id),
+                              startAyatId: Number(i + 1),
+                              endAyatId: Number(i + 1),
+                            };
+                            await fetcher('/api/set-hafalan', { user: body });
+                          }}
+                          className="px-2 hover:bg-[#5EEAD3] hover:text-white"
+                        >
+                          {React.createElement(item.icon, {
+                            className: 'h-5 inline-block mr-1',
+                          })}
+                          {item.text}
+                        </button>
+                      </Link>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          setIsOpen(true);
+                          setDataModal({
+                            title: 'Access to this page is restricted',
+                            content: 'You need to login to access this page.',
+                            button: 'Got it, thanks!',
+                          });
+                        }}
+                        className="px-2 hover:bg-[#5EEAD3] hover:text-white"
+                      >
+                        {React.createElement(item.icon, {
+                          className: 'h-5 inline-block mr-1',
+                        })}
+                        {item.text}
+                      </button>
+                    )}
+                  </>
                 )}
               </span>
             );
@@ -166,6 +202,13 @@ export function QuranDetails({ data }: any) {
   return (
     <div className="bg-white shadow overflow-hidden rounded-md">
       <div className="divide-y divide-dashed divide-gray-300">{surahList}</div>
+      <Modal
+        isOpen={isOpen}
+        onToggle={handleToogle}
+        title={dataModal.title}
+        content={dataModal.content}
+        button={dataModal.button}
+      />
       <OptionSwitch
         option={option}
         open={open}
