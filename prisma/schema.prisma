@@ -63,4 +63,5 @@ model Memorization {
   surahId     Int
   startAyatId Int
   endAyatId   Int
+  status      Int
 }

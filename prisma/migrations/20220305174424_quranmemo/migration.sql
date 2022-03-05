@@ -53,6 +53,7 @@ CREATE TABLE "Memorization" (
     "surahId" INTEGER NOT NULL,
     "startAyatId" INTEGER NOT NULL,
     "endAyatId" INTEGER NOT NULL,
+    "status" INTEGER NOT NULL,
 
     CONSTRAINT "Memorization_pkey" PRIMARY KEY ("id")
 );
