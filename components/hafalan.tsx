@@ -34,15 +34,14 @@ export function Hafalan({ callback }: { callback: any }) {
   }, [reload]);
 
   data.forEach((item: any, index: number) => {
-    const newData = surahList.find((surah: any) => surah.id === item.id);
+    const newData = surahList.find((surah: any) => surah.id === item.surahId);
     if (newData) {
-      data[index] = Object.assign(newData, item);
+      data[index].name = newData.name;
     }
   });
   const belumHafal = data.filter((item: any) => item.status === 0);
 
   const sudahHafal = data.filter((item: any) => item.status === 1);
-  console.log(sudahHafal);
 
   const [parenTab] = React.useState([
     {
