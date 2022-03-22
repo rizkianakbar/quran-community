@@ -15,7 +15,7 @@ Click this link to see the [Demo!](https://quranmemo.vercel.app/) (better open i
 
 ### 2. Run This Command on Project Folder
 
-```
+``` 
 # Development
 npm i
 npm start
