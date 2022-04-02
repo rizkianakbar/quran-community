@@ -22,9 +22,11 @@ export const ReactSpringBottomSheetUsage = React.forwardRef(
           props.fullScreen ? maxHeight : maxHeight / 2
         }
         snapPoints={({ maxHeight }) => [
-          maxHeight - maxHeight / 10,
-          maxHeight / 4,
-          maxHeight * 0.6,
+          maxHeight / 1.1,
+          maxHeight / 2,
+          // maxHeight - maxHeight / 10,
+          // maxHeight / 4,
+          // maxHeight * 0.6,
         ]}
         expandOnContentDrag
         header={props.title}
