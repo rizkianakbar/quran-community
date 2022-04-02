@@ -2,6 +2,7 @@ import { BookmarkIcon, PlayIcon, ShareIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import { Button } from './ui/button/button';
 import Modal from './ui/modal/modal';
 
 const tabClasses = (isActive?: boolean) => {
@@ -391,13 +392,19 @@ export default function Memorization({ ayat, data }: any) {
     return (
       <>
         <div className="flex justify-center bg-quranmemo-soft p-2">
-          <p className="text-sm text-quranmemo-dark text-center">
-            Menghafal Surah {data.name_latin} : {firstAyat}-{secondAyat} <br />
+          <div className="text-sm text-quranmemo-dark text-center">
+            <span>
+              {' '}
+              Menghafal Surah {data.name_latin} : {firstAyat}-{secondAyat}{' '}
+            </span>
             <br />
-            {desc}
-            {/* Hafalkan dengan teliti target hafalan arabic dan terjemahannya,
-            ulangi muratal sebanyak-banyaknya sampai hafal */}
-          </p>
+            <div>
+              <Button className="mt-1 mb-1 text-xs" primary>
+                Simpan Hafalan
+              </Button>
+            </div>
+            <span>{desc}</span>
+          </div>
         </div>
       </>
     );
