@@ -11,6 +11,12 @@ const settings = {
     dest: 'public',
     runtimeCaching,
   },
+  async headers() {
+    return {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    };
+  },
 };
 
 module.exports =
