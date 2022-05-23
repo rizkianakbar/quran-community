@@ -7,6 +7,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
+  // allow cross origin requests
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
   try {
     const { user } = req.body;
     const savedUser = await prisma.comments.create({
