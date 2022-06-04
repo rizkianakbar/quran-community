@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createElement, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { homepageMenus } from '@/lib/home-data';
 import Modal from '../ui/modal/modal';
@@ -15,22 +15,21 @@ interface IModal {
 }
 
 export function HomeMenu() {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [bottomSheetTitle, setBottomSheetTitle] = React.useState('');
-  const [bottomSheetContent, setBottomSheetContent] = React.useState('') as any;
-  const [open, setOpen] = React.useState(false);
-  const [option] = React.useState<Option>(Option.ReactSpringBottomSheet);
-  const [dataModal, setDataModal] = React.useState<IModal>({
+  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [option] = useState<Option>(Option.ReactSpringBottomSheet);
+  const [bottomSheetTitle, setBottomSheetTitle] = useState('');
+  const [bottomSheetContent, setBottomSheetContent] = useState('') as any;
+  const [dataModal, setDataModal] = useState<IModal>({
     title: '',
     content: '',
     button: '',
   });
 
   const { data: session } = useSession();
-
   const isLogin = session !== null ? true : false;
 
-  React.useEffect(() => {
+  useEffect(() => {
     const today = new Date();
     const day = today.getDay();
     if (day === 5) {
@@ -42,9 +41,11 @@ export function HomeMenu() {
       });
     }
   }, []);
+
   const handleToogle = () => {
     setIsOpen(!isOpen);
   };
+
   const openModal = (name: string) => {
     if (name === "Muraja'ah") {
       setIsOpen(true);
@@ -85,7 +86,7 @@ export function HomeMenu() {
               aria-hidden
               className="flex items-center justify-center h-10 w-10 bg-[#5EEAD3] rounded-full shadow-md"
             >
-              {React.createElement(item.icon, {
+              {createElement(item.icon, {
                 className: 'h-6 w-6 text-white',
               })}
             </div>

@@ -17,6 +17,8 @@ export function QuranForm({ data }: any) {
       ? `/quran/${route + 1}?id=${route + 1}`
       : `/quran/${1}?id=${1}`;
 
+  console.log(data);
+
   return (
     <div className="text-center py-4 text-gray-400 flex justify-between">
       <Link href={prev} as={prev} passHref replace>

@@ -1,10 +1,8 @@
+import React from 'react';
 import { Disclosure } from '@headlessui/react';
-import { ChevronUpIcon, ShieldCheckIcon } from '@heroicons/react/solid';
-import Link from 'next/link';
-import React, { createElement } from 'react';
+import { ChevronUpIcon } from '@heroicons/react/solid';
 
 export const FAQ = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
   const dataSubscription = [
     {
       name: 'Sudah bayar lewat pulsa tapi belum aktif?',

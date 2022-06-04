@@ -1,12 +1,9 @@
-import { BackspaceIcon, MailIcon } from '@heroicons/react/solid';
-import Link from 'next/link';
+import { MailIcon } from '@heroicons/react/solid';
 import React from 'react';
 import { Button } from './ui/button/button';
 import { WhatsAppIcon } from './ui/icons';
 
 export function Contact() {
-  const [isOpen, setIsOpen] = React.useState(false);
-
   const firstText =
     'Jika ada masukan dan ide untuk dakwah, ada potongan ayat atau muratal yang salah ataupun bug bisa kontak kami di';
 

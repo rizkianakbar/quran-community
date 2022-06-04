@@ -13,7 +13,7 @@ import { Option, OptionSwitch } from '..';
 import { Tafsir } from '../tafsir';
 import Modal from '../ui/modal/modal';
 
-const calc = (input: any) => {
+const calc = (input: number) => {
   let result = '';
   let num = input;
   for (let i = 0; i < 3; i++) {
@@ -28,6 +28,7 @@ interface IModal {
   content: JSX.Element | string;
   button: string;
 }
+
 export function QuranDetails({ data }: any) {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [bottomSheetTitle, setBottomSheetTitle] = React.useState('');
@@ -49,7 +50,7 @@ export function QuranDetails({ data }: any) {
   const { data: session } = useSession();
   const isLogin = session !== null ? true : false;
 
-  const onClickPlay = (index: any) => {
+  const onClickPlay = (index: number) => {
     if (isAudioPlaying) {
       return;
     } else {
@@ -59,7 +60,7 @@ export function QuranDetails({ data }: any) {
         verse.classList.add('border-4');
         verse.classList.add('bg-[#E0EFEE]');
       }
-      const surah = calc(id);
+      const surah = calc(Number(id));
       const ayat = calc(index);
       const audioPath = `https://quranmemo.com/public/sound/Al_Afasy/${surah}${ayat}.mp3`;
 
@@ -79,7 +80,7 @@ export function QuranDetails({ data }: any) {
 
   const onDismiss = () => setOpen(false);
 
-  const onClickTafsir = (index: any) => {
+  const onClickTafsir = (index: number) => {
     setBottomSheetTitle(`Tafsir ${data.name_latin} : ${index}`);
     setBottomSheetContent(<Tafsir data={data.tafsir.id.kemenag.text[index]} />);
     onReady();
@@ -120,7 +121,7 @@ export function QuranDetails({ data }: any) {
           </p>
         </div>
         <div className="bg-gray-100 text-center text-gray-400 text-sm divide-x divide-dashed divide-gray-300">
-          {buttonData.map((item, index) => {
+          {buttonData.map((item) => {
             return (
               <span key={item.text}>
                 {item.onclick !== 'memorize' ? (

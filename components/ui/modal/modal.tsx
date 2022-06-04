@@ -9,7 +9,14 @@ export default function Modal({
   content,
   button,
   wfull,
-}: any) {
+}: {
+  isOpen: boolean;
+  onToggle: () => void;
+  title: string;
+  content: React.ReactNode;
+  button: string;
+  wfull?: boolean;
+}) {
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>

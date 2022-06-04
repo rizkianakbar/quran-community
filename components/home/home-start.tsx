@@ -1,6 +1,4 @@
-import Ziyadah from '@/pages/ziyadah';
-import React, { useState } from 'react';
-import { Option, OptionSwitch } from '..';
+import React from 'react';
 import Tabs from '../ui/tab';
 import { HomeAdds } from './home-adds';
 import { HomeMenu } from './home-menu';

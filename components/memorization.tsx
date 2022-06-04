@@ -287,7 +287,7 @@ export default function Memorization({ ayat, data }: any) {
           )}
         </div>
         <div className="bg-gray-100 text-center text-gray-400 text-sm divide-x divide-dashed divide-gray-300">
-          {buttonData.map((item, index) => {
+          {buttonData.map((item) => {
             return (
               <span key={item.text}>
                 <button

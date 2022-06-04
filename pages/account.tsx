@@ -34,9 +34,7 @@ const Account = () => {
   const [bottomSheetContent, setBottomSheetContent] = React.useState('') as any;
   const [open, setOpen] = React.useState(false);
   const [fullScreen, setFullScreen] = React.useState(false);
-  const [option, setOption] = React.useState<Option>(
-    Option.ReactSpringBottomSheet
-  );
+  const [option] = React.useState<Option>(Option.ReactSpringBottomSheet);
   const { data: session } = useSession();
   const isLogin = session ? true : false;
   const onReady = () => setOpen(true);
@@ -52,6 +50,7 @@ const Account = () => {
   });
 
   const onDismiss = () => setOpen(false);
+
   const menuData = [
     {
       name: 'Menghafal',
@@ -88,6 +87,7 @@ const Account = () => {
       },
     },
   ];
+
   const supportData = [
     {
       name: 'FAQ',
@@ -128,15 +128,14 @@ const Account = () => {
   const renderMenu = menuData.map((menu, index) => {
     return (
       // add border-b except last item
-      <>
+      <div key={index}>
         {menu.href ? (
-          <Link href={menu.href} key={index} passHref as={menu.href}>
+          <Link href={menu.href} passHref as={menu.href}>
             <a>
               <div
                 className={`{border-t first:border-t-0 first py-3 ${
                   index === menuData.length - 1 ? '' : 'border-b'
                 }`}
-                key={index}
               >
                 {createElement(menu.icon, {
                   className:
@@ -153,12 +152,11 @@ const Account = () => {
             </a>
           </Link>
         ) : (
-          <a onClick={menu.onclick} key={index} className="cursor-pointer">
+          <a onClick={menu.onclick} className="cursor-pointer">
             <div
               className={`{border-t first:border-t-0 first py-3 ${
                 index === menuData.length - 1 ? '' : 'border-b'
               }`}
-              key={index}
             >
               {createElement(menu.icon, {
                 className:
@@ -174,21 +172,20 @@ const Account = () => {
             </div>
           </a>
         )}
-      </>
+      </div>
     );
   });
 
   const renderSupport = supportData.map((support, index) => {
     return (
-      <>
+      <div key={index}>
         {support.name !== 'FAQ' && support.name != 'Kontak' ? (
-          <Link href={support.href} key={index} passHref as={support.href}>
+          <Link href={support.href} passHref as={support.href}>
             <a>
               <div
                 className={`{border-t first:border-t-0 first py-3 ${
                   index === supportData.length - 1 ? '' : 'border-b'
                 }`}
-                key={index}
               >
                 {createElement(support.icon, {
                   className:
@@ -205,7 +202,7 @@ const Account = () => {
             </a>
           </Link>
         ) : support.name === 'Kontak' ? (
-          <a onClick={support.onclick} key={index} className="cursor-pointer">
+          <a onClick={support.onclick} className="cursor-pointer">
             <div
               className={`{border-t first:border-t-0 first py-3 ${
                 index === supportData.length - 1 ? '' : 'border-b'
@@ -225,7 +222,7 @@ const Account = () => {
             </div>
           </a>
         ) : (
-          <a onClick={support.onclick} key={index} className="cursor-pointer">
+          <a onClick={support.onclick} className="cursor-pointer">
             <div
               className={`{border-t first:border-t-0 first py-3 ${
                 index === supportData.length - 1 ? '' : 'border-b'
@@ -245,7 +242,7 @@ const Account = () => {
             </div>
           </a>
         )}
-      </>
+      </div>
     );
   });
   return (
@@ -352,7 +349,6 @@ const Account = () => {
                 v0.0.1
               </span>
             </div>
-            {/* verical center */}
           </div>
         </Container>
       </PageSection>
