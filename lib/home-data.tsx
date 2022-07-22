@@ -29,46 +29,9 @@ export const homepageMenus: HomepageMenuItem[] = [
     needLogin: true,
   },
   {
-    name: "Muraja'ah",
-    href: '/',
-    icon: DonationIcon,
-    needLogin: true,
-  },
-  {
-    name: 'Quiz',
-    href: '/',
-    icon: EducationIcon,
-    needLogin: true,
-  },
-  {
     name: 'Al-Quran',
     href: '/quran',
     icon: BookOpenIcon,
     needLogin: false,
-  },
-  {
-    name: 'E-Learning',
-    href: '/',
-    icon: EducationIcon,
-    needLogin: true,
-  },
-  {
-    name: 'Top Santri',
-    href: '/',
-    icon: ContributionIcon,
-    external: true,
-    needLogin: true,
-  },
-  {
-    name: 'Pencapaian',
-    href: '/',
-    icon: StarIcon,
-    needLogin: true,
-  },
-  {
-    name: 'Amalam Yaumi',
-    href: '/',
-    icon: EducationIcon,
-    needLogin: true,
   },
 ];
