@@ -23,6 +23,12 @@ class MyDocument extends Document {
             content="https://res.cloudinary.com/rizkianakbar/image/upload/v1654826586/icon-256x256_myje8c.png"
             name="og:image"
           />
+          <script
+            async
+            defer
+            data-website-id="b1e2643a-b5e7-471d-a320-20446aac3d6f"
+            src="https://umami-snowy-iota.vercel.app/umami.js"
+          ></script>
         </Head>
         <body>
           <Main />
